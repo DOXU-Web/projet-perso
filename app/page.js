@@ -1,10 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./page.module.css";
+import YoutubeEmbed from "../components/YoutubeEmbed/YoutubeEmbed";
 
-const Home = () => {
+const MainPage = () => {
   return (
     <>
+      <div>
+        <h1>DOXU</h1>
+        <YoutubeEmbed videoId='sSgyzHDuDkU' />
+        <p>kegoengongorneognerngeoigneoignegengoegnergierngeigneigerigienog</p>
+      </div>
+
       <div className={styles.menu}>
         <Link className={styles.char} href='/perso'>
           <Image
@@ -50,8 +57,15 @@ const Home = () => {
           />
         </Link>
       </div>
+
+      <div>
+        <img
+          src='https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbDgxeXI4bHI4NnBreWh5Nng4eGd2cnM0bm9wMmgzN2FsYnY2b3lxYSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/tHIRLHtNwxpjIFqPdV/giphy.gif'
+          alt='GIF test'
+        />
+      </div>
     </>
   );
 };
 
-export default Home;
+export default MainPage;
