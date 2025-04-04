@@ -1,0 +1,8 @@
+.gif-container {
+  background-color: rgb(255, 255, 255);
+  width: 20%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -22,3 +22,17 @@
   width: 20%;
   height: auto;
 }
+
+.gifStyle {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.loreStyle {
+  background-image: url("/loading_controls.png");
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+  width: 100%;
+}
