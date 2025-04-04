@@ -16,11 +16,11 @@ const MainPage = () => {
         <Link className={styles.char} href='/perso'>
           <Image
             className={styles.imgStyle}
-            src='/Aphelios_banner.jpg'
+            src='/sheer_2.png'
             alt='Perso 1'
             layout='intrinsic'
-            width={308}
-            height={560}
+            width={1092}
+            height={1538}
           />
         </Link>
 
