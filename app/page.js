@@ -10,8 +10,10 @@ const MainPage = () => {
   return (
     <>
       <Header />
+
+      <Image className={styles.banner} src="/doxu_art.png" alt="Doxu banner" width={1280} height={720} />
+
       <div>
-        <h1>DOXU</h1>
         <YoutubeEmbed videoId="sSgyzHDuDkU" />
         <p>
           Sin autem ad adulescentiam perduxissent, dirimi tamen interdum contentione vel uxoriae condicionis vel commodi
@@ -24,47 +26,19 @@ const MainPage = () => {
 
       <div className={styles.menu}>
         <Link className={styles.char} href="/perso_1">
-          <Image
-            className={styles.imgStyle}
-            src="/sheer_2.png"
-            alt="Perso 1"
-            layout="intrinsic"
-            width={1092}
-            height={1538}
-          />
+          <Image className={styles.imgStyle} src="/sheer_2.png" alt="Perso 1" width={1092} height={1538} />
         </Link>
 
         <Link className={styles.char} href="/perso_2">
-          <Image
-            className={styles.imgStyle}
-            src="/Diana_banner.webp"
-            alt="Perso 2"
-            layout="intrinsic"
-            width={308}
-            height={560}
-          />
+          <Image className={styles.imgStyle} src="/sheer_2.png" alt="Perso 2" width={308} height={560} />
         </Link>
 
         <Link className={styles.char} href="/perso">
-          <Image
-            className={styles.imgStyle}
-            src="/Jinx_banner.webp"
-            alt="Perso 3"
-            layout="intrinsic"
-            width={308}
-            height={560}
-          />
+          <Image className={styles.imgStyle} src="/sheer_2.png" alt="Perso 3" width={308} height={560} />
         </Link>
 
         <Link className={styles.char} href="/perso">
-          <Image
-            className={styles.imgStyle}
-            src="/Vi_banner.webp"
-            alt="Perso 4"
-            layout="intrinsic"
-            width={308}
-            height={560}
-          />
+          <Image className={styles.imgStyle} src="/sheer_2.png" alt="Perso 4" width={308} height={560} />
         </Link>
       </div>
 
