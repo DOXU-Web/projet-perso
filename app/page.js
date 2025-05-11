@@ -5,13 +5,16 @@ import YoutubeEmbed from "../components/YoutubeEmbed/YoutubeEmbed";
 import GifGameplay from "../components/GifGameplay/GifGameplay";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
+import Banner from "../components/Banner/Banner";
+import AnimatedSection from "../components/AnimatedSection/AnimatedSection";
 
 const MainPage = () => {
   return (
     <>
       <Header />
+      <Banner />
 
-      <Image className={styles.banner} src="/doxu_art.png" alt="Doxu banner" width={1280} height={720} />
+      {/*<Image className={styles.banner} src="/doxu_art.png" alt="Doxu art" width={1280} height={720} />*/}
 
       <div>
         <YoutubeEmbed videoId="sSgyzHDuDkU" />
