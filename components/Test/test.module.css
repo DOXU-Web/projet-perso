@@ -1,0 +1,37 @@
+.footer {
+  background-color: #000;
+  color: white;
+  padding: 2rem;
+  text-align: center;
+}
+
+.socials {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-bottom: 1rem;
+}
+
+.socials a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.socials a:hover {
+  color: #1da1f2; /* Exemple : bleu Twitter */
+}
+
+.icon {
+  font-size: 24px;
+}
+
+.text {
+  font-size: 0.9rem;
+  color: #aaa;
+}

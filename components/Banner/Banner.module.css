@@ -5,7 +5,31 @@
   overflow: hidden;
 }
 
-.heroImg {
-  object-fit: cover;
-  z-index: 1;
+.heroImage {
+  object-position: center;
+}
+
+.buttonContainer {
+  position: absolute;
+  bottom: 120px; /* distance depuis le bas de la bannière */
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.ctaButton {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: black;
+  padding: 12px 32px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.ctaButton:hover {
+  background-color: black;
+  color: white;
 }

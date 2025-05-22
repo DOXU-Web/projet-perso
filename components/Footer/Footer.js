@@ -1,9 +1,9 @@
 import Image from "next/image";
-import styles from "./Footer.css";
+import styles from "./Footer.module.css";
 
 const Footer = () => {
   return (
-    <footer>
+    <footer className={styles.footerContainer}>
       <Image src="/doxu_logo.png" alt="Doxu logo" width={500} height={500} />
       <nav>
         <ul>

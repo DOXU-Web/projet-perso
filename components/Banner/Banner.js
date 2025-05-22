@@ -3,9 +3,22 @@ import styles from "./Banner.module.css";
 
 const Banner = () => {
   return (
-    <section className={styles.hero}>
-      <Image src="/doxu_art.png" alt="Doxu art" layout="fill" objectFit="cover" className={styles.heroImg} priority />
-    </section>
+    <div className={styles.hero}>
+      <Image
+        src="/doxu_art.png"
+        alt="Hero Banner"
+        layout="fill"
+        objectFit="cover"
+        priority
+        className={styles.heroImage}
+      />
+
+      <div className={styles.buttonContainer}>
+        <a href="#section-jeu" className={styles.ctaButton}>
+          TRAILER
+        </a>
+      </div>
+    </div>
   );
 };
 

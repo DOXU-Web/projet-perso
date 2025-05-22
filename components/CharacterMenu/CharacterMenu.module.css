@@ -1,0 +1,121 @@
+.menuContainer {
+  text-align: center;
+}
+
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.char {
+  position: relative;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.char:hover {
+  transform: scale(1.05);
+}
+
+.imgStyle {
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.char:hover .imgStyle {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+}
+
+.futureCard {
+  filter: grayscale(100%) blur(0.5px);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.comingSoon {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.8);
+  color: #000;
+  font-weight: bold;
+  padding: 0.3rem 0.6rem;
+  border-radius: 5px;
+  font-size: 0.9rem;
+}
+
+.buttonContainer {
+  margin-top: 1.5rem;
+}
+
+.toggleButton,
+.closeButton {
+  padding: 0.8rem 1.4rem;
+  background-color: black;
+  color: white;
+  border: 2px solid white;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.toggleButton:hover,
+.closeButton:hover {
+  background-color: white;
+  color: black;
+}
+
+/* Modal styles */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modalContent {
+  background-color: #111;
+  color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 80%;
+  max-width: 900px;
+  max-height: 80vh;
+  overflow-y: auto;
+  text-align: center;
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+.char {
+  border: 2px solid #e100ff;
+  box-shadow: 0 0 12px #e100ff, 0 0 24px #e100ff;
+  border-radius: 12px;
+  transition: box-shadow 0.3s ease;
+}
+
+.char:hover {
+  box-shadow: 0 0 20px #e100ff, 0 0 40px #e100ff;
+}

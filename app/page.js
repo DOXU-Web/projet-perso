@@ -6,17 +6,19 @@ import GifGameplay from "../components/GifGameplay/GifGameplay";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 import Banner from "../components/Banner/Banner";
-import AnimatedSection from "../components/AnimatedSection/AnimatedSection";
+import CharacterMenu from "../components/CharacterMenu/CharacterMenu";
+import Test from "../components/Test/test";
 
 const MainPage = () => {
   return (
     <>
       <Header />
       <Banner />
+      <Test />
 
       {/*<Image className={styles.banner} src="/doxu_art.png" alt="Doxu art" width={1280} height={720} />*/}
 
-      <div>
+      <div className={styles.videoTexte}>
         <YoutubeEmbed videoId="sSgyzHDuDkU" />
         <p>
           Sin autem ad adulescentiam perduxissent, dirimi tamen interdum contentione vel uxoriae condicionis vel commodi
@@ -26,6 +28,8 @@ const MainPage = () => {
           saepe inter amicissimos exstitisse.
         </p>
       </div>
+
+      <CharacterMenu />
 
       <div className={styles.menu}>
         <Link className={styles.char} href="/perso_1">
@@ -61,13 +65,15 @@ const MainPage = () => {
           Epigonus e Lycia philosophus ducitur et Eusebius ab Emissa Pittacas cognomento, concitatus orator, cum
           quaestor non hos sed tribunos fabricarum insimulasset promittentes armorum si novas res agitari conperissent.
         </p>
+        <div className={styles.loreStyle}>
+          <h2>Exemple des mécaniques du jeu</h2>
 
-        <h2>Exemple des mécaniques du jeu</h2>
-        <div className={styles.gifStyle}>
-          <GifGameplay gifUrl="/back_med_air.gif" altText="Back Med Air" />
-          <GifGameplay gifUrl="/fwrd_med.gif" altText="Test" />
-          <GifGameplay gifUrl="/jump_walk.gif" altText="Test" />
-          <GifGameplay gifUrl="/shuiro.gif" altText="Test" />
+          <div className={styles.gifStyle}>
+            <GifGameplay gifUrl="/back_med_air.gif" altText="Back Med Air" />
+            <GifGameplay gifUrl="/fwrd_med.gif" altText="Test" />
+            <GifGameplay gifUrl="/jump_walk.gif" altText="Test" />
+            <GifGameplay gifUrl="/shuiro.gif" altText="Test" />
+          </div>
         </div>
 
         <div className={styles.loreStyle}>
@@ -82,7 +88,6 @@ const MainPage = () => {
           </p>
         </div>
       </div>
-      <Footer />
     </>
   );
 };
