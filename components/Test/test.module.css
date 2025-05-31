@@ -1,5 +1,5 @@
 .footer {
-  background-color: #000;
+  background-color: #443f3f;
   color: white;
   padding: 2rem;
   text-align: center;
@@ -24,7 +24,7 @@
 }
 
 .socials a:hover {
-  color: #1da1f2; /* Exemple : bleu Twitter */
+  color: #a900d3; /* Exemple : bleu Twitter */
 }
 
 .icon {

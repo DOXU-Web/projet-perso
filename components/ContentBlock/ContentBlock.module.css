@@ -1,0 +1,23 @@
+.contentBlock {
+  max-width: 1800px;
+  margin: 4rem auto;
+  padding: 3rem 2rem;
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.6); /* pour lisibilité */
+  padding: 4rem;
+  border-radius: 12px;
+  max-width: 80%;
+  text-align: center;
+}

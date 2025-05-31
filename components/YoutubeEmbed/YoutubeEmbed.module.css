@@ -1,4 +1,5 @@
 .videoContainer {
   display: flex;
   justify-content: center;
+  padding: 4%;
 }
