@@ -17,11 +17,9 @@ const MainPage = () => {
     <>
       <Header />
 
-      <Banner />
+      <Banner imageSrc="/doxu_art.png" alt="test"></Banner>
 
-      {/*<Image className={styles.banner} src="/doxu_art.png" alt="Doxu art" width={1280} height={720} />*/}
-
-      <ContentBlock backgroundImage="/city.png">
+      <ContentBlock imageSrc="/city.png" alt="test">
         <h2 className={styles.title}>Un monde épique t’attend</h2>
         <p className={styles.text}>
           Explore des territoires mystérieux et combats des ennemis redoutables.Sin autem ad adulescentiam perduxissent,
@@ -33,7 +31,7 @@ const MainPage = () => {
         <YoutubeEmbed videoId="sSgyzHDuDkU" />
       </ContentBlock>
 
-      <ContentBlock backgroundImage="/loading_controls.png">
+      <ContentBlock imageSrc="/loading_controls.png">
         <h2 className={styles.title}>1 VS 1</h2>
         <p className={styles.text}>
           Et quia Montius inter dilancinantium manus spiritum efflaturus Epigonum et Eusebium nec professionem nec
@@ -59,11 +57,11 @@ const MainPage = () => {
         </div>
       </ContentBlock>
 
-      <ContentBlock backgroundImage="/ombre.png">
+      <ContentBlock imageSrc="/ombre.png">
         <CharacterMenu />
       </ContentBlock>
 
-      <ContentBlock backgroundImage="/banner.png">
+      <ContentBlock imageSrc="/banner.png">
         <EmailForm />
       </ContentBlock>
 
