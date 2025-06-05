@@ -11,11 +11,54 @@ import Test from "../components/Test/test";
 import EmailForm from "@/components/EmailForm/EmailForm";
 import ScrollButton from "@/components/ScrollButton/ScrollButton";
 import ContentBlock from "@/components/ContentBlock/ContentBlock";
+import CardChar from "../components/CardChar/CardChar";
 
 const MainPage = () => {
   return (
     <>
       <Header />
+
+      <div className={styles.container}>
+        <CardChar
+          imageSrc="/perso_1.png"
+          alt="Akira Storm en position de combat"
+          title="Sheer"
+          subtitle="Maître du Vent"
+          description="Combattant légendaire..."
+          longDescription="Né dans les montagnes sacrées..."
+          variant="character"
+        />
+
+        <CardChar
+          imageSrc="/perso_1.png"
+          alt="Akira Storm en position de combat"
+          title="Sheer"
+          subtitle="Maître du Vent"
+          description="Combattant légendaire..."
+          longDescription="Né dans les montagnes sacrées..."
+          variant="character"
+        />
+
+        <CardChar
+          imageSrc="/perso_2.png"
+          alt="Akira Storm en position de combat"
+          title="Sethj"
+          subtitle="Maître du Vent"
+          description="Combattant légendaire..."
+          longDescription="Né dans les montagnes sacrées..."
+          variant="character"
+        />
+
+        <CardChar
+          imageSrc="/perso_2.png"
+          alt="Akira Storm en position de combat"
+          title="Sethj"
+          subtitle="Maître du Vent"
+          description="Combattant légendaire..."
+          longDescription="Né dans les montagnes sacrées..."
+          variant="character"
+        />
+      </div>
 
       <Banner imageSrc="/doxu_art.png" alt="test"></Banner>
 
@@ -31,7 +74,11 @@ const MainPage = () => {
         <YoutubeEmbed videoId="sSgyzHDuDkU" />
       </ContentBlock>
 
-      <ContentBlock imageSrc="/loading_controls.png">
+      <ContentBlock imageSrc="/loading_controls.png" alt="test">
+        <div className="charBackgroundContainer">
+          <Image src="/sethj1.png" className={styles.charBackground1} alt="Sethj SplashArt" width={800} height={800} />
+          <Image src="/sethj2.png" className={styles.charBackground2} alt="Sethj SplashArt" width={800} height={800} />
+        </div>
         <h2 className={styles.title}>1 VS 1</h2>
         <p className={styles.text}>
           Et quia Montius inter dilancinantium manus spiritum efflaturus Epigonum et Eusebium nec professionem nec
@@ -57,11 +104,41 @@ const MainPage = () => {
         </div>
       </ContentBlock>
 
-      <ContentBlock imageSrc="/ombre.png">
+      <ContentBlock imageSrc="/ombre.png" alt="test">
         <CharacterMenu />
       </ContentBlock>
 
-      <ContentBlock imageSrc="/banner.png">
+      <ContentBlock imageSrc="/fond1.png" alt="test">
+        <h2 className={styles.title}>STAFF</h2>
+        <p className={styles.text}>
+          Et quia Montius inter dilancinantium manus spiritum efflaturus Epigonum et Eusebium nec professionem nec
+          dignitatem ostendens aliquotiens increpabat, qui sint hi magna quaerebatur industria, et nequid intepesceret,
+          Epigonus e Lycia philosophus ducitur et Eusebius ab Emissa Pittacas cognomento, concitatus orator, cum
+          quaestor non hos sed tribunos fabricarum insimulasset promittentes armorum si novas res agitari conperissent.
+        </p>
+      </ContentBlock>
+
+      <ContentBlock imageSrc="/fond2.png" alt="test">
+        <h2 className={styles.title}>NOUS CONTACTER</h2>
+        <p className={styles.text}>
+          Et quia Montius inter dilancinantium manus spiritum efflaturus Epigonum et Eusebium nec professionem nec
+          dignitatem ostendens aliquotiens increpabat, qui sint hi magna quaerebatur industria, et nequid intepesceret,
+          Epigonus e Lycia philosophus ducitur et Eusebius ab Emissa Pittacas cognomento, concitatus orator, cum
+          quaestor non hos sed tribunos fabricarum insimulasset promittentes armorum si novas res agitari conperissent.
+        </p>
+      </ContentBlock>
+
+      <ContentBlock imageSrc="/fond3.png" alt="test">
+        <h2 className={styles.title}>TEST</h2>
+        <p className={styles.text}>
+          Et quia Montius inter dilancinantium manus spiritum efflaturus Epigonum et Eusebium nec professionem nec
+          dignitatem ostendens aliquotiens increpabat, qui sint hi magna quaerebatur industria, et nequid intepesceret,
+          Epigonus e Lycia philosophus ducitur et Eusebius ab Emissa Pittacas cognomento, concitatus orator, cum
+          quaestor non hos sed tribunos fabricarum insimulasset promittentes armorum si novas res agitari conperissent.
+        </p>
+      </ContentBlock>
+
+      <ContentBlock imageSrc="/banner.png" alt="test">
         <EmailForm />
       </ContentBlock>
 
