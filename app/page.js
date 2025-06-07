@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import styles from "./page.module.css";
 import YoutubeEmbed from "../components/YoutubeEmbed/YoutubeEmbed";
 import GifGameplay from "../components/GifGameplay/GifGameplay";
@@ -11,56 +10,18 @@ import Test from "../components/Test/test";
 import EmailForm from "@/components/EmailForm/EmailForm";
 import ScrollButton from "@/components/ScrollButton/ScrollButton";
 import ContentBlock from "@/components/ContentBlock/ContentBlock";
-import CardChar from "../components/CardChar/CardChar";
+import Showcase from "@/components/Showcase/Showcase";
 
 const MainPage = () => {
   return (
     <>
       <Header />
 
-      <div className={styles.container}>
-        <CardChar
-          imageSrc="/perso_1.png"
-          alt="Akira Storm en position de combat"
-          title="Sheer"
-          subtitle="Maître du Vent"
-          description="Combattant légendaire..."
-          longDescription="Né dans les montagnes sacrées..."
-          variant="character"
-        />
-
-        <CardChar
-          imageSrc="/perso_1.png"
-          alt="Akira Storm en position de combat"
-          title="Sheer"
-          subtitle="Maître du Vent"
-          description="Combattant légendaire..."
-          longDescription="Né dans les montagnes sacrées..."
-          variant="character"
-        />
-
-        <CardChar
-          imageSrc="/perso_2.png"
-          alt="Akira Storm en position de combat"
-          title="Sethj"
-          subtitle="Maître du Vent"
-          description="Combattant légendaire..."
-          longDescription="Né dans les montagnes sacrées..."
-          variant="character"
-        />
-
-        <CardChar
-          imageSrc="/perso_2.png"
-          alt="Akira Storm en position de combat"
-          title="Sethj"
-          subtitle="Maître du Vent"
-          description="Combattant légendaire..."
-          longDescription="Né dans les montagnes sacrées..."
-          variant="character"
-        />
-      </div>
-
       <Banner imageSrc="/doxu_art.png" alt="test"></Banner>
+
+      <ContentBlock imageSrc="/fond3.png" alt="test">
+        <Showcase />
+      </ContentBlock>
 
       <ContentBlock imageSrc="/city.png" alt="test">
         <h2 className={styles.title}>Un monde épique t’attend</h2>

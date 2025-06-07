@@ -1,13 +1,16 @@
 .contentBlock {
   position: relative;
   width: 90%;
-  margin: 10rem auto;
+  max-width: 1200px;
+  margin: 5rem auto;
   min-height: 300px;
   border-radius: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 5%; /* Espace entre le contenu et l’image */
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .imageWrapper {
@@ -21,37 +24,83 @@
 
 .content {
   position: relative;
-  z-index: 1;
+  z-index: 2;
+  width: 100%;
   padding: 2rem;
-  background-color: rgba(0, 0, 0, 0.6);
-  border-radius: 12px;
-  text-align: center;
-  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   box-sizing: border-box;
 }
 
-/* ✅ Responsive : écrans de taille moyenne (tablettes) */
+.contentInner {
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  border-radius: 12px;
+  padding: 2rem;
+  color: white;
+  max-width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fond coloré si pas d’image */
+.contentBlock:not(:has(.imageWrapper)) {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .contentBlock {
+    width: 95%;
+    margin: 4rem auto;
+  }
+}
+
 @media (max-width: 768px) {
   .contentBlock {
-    padding: 1rem;
+    width: 95%;
+    margin: 3rem auto;
     min-height: 250px;
+    border-radius: 15px;
   }
 
   .content {
     padding: 1.5rem;
-    font-size: 0.95rem;
+  }
+
+  .contentInner {
+    padding: 1.5rem;
+    border-radius: 10px;
   }
 }
 
-/* ✅ Responsive : petits écrans (mobiles) */
 @media (max-width: 480px) {
   .contentBlock {
-    padding: 0.5rem;
+    width: 98%;
+    margin: 2rem auto;
     min-height: 200px;
+    border-radius: 12px;
   }
 
   .content {
     padding: 1rem;
+  }
+
+  .contentInner {
+    padding: 1rem;
+    border-radius: 8px;
     font-size: 0.9rem;
   }
 }

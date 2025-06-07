@@ -1,0 +1,238 @@
+.container {
+  width: 100%;
+
+  /* Garder ces propriétés : */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+
+  /* Optionnel: ajuster le padding pour s'adapter au ContentBlock */
+  padding: 0;
+}
+
+.titleSection {
+  text-align: center;
+  margin-bottom: 40px; /* Réduire l'espace si nécessaire */
+}
+
+.title {
+  font-size: clamp(1.5rem, 4vw, 2.5rem); /* Réduire légèrement la taille */
+  font-weight: bold;
+  color: white;
+  margin-bottom: 15px; /* Réduire l'espace */
+  background: linear-gradient(45deg, #fbbf24, #f97316);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  font-size: clamp(0.9rem, 2vw, 1.1rem); /* Réduire légèrement */
+  color: #d1d5db;
+  margin: 0;
+}
+
+.carouselContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px; /* Réduire pour s'adapter au ContentBlock */
+  gap: 20px;
+}
+
+.navButton {
+  background-color: rgba(0, 0, 0, 0.6); /* Augmenter légèrement l'opacité */
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px; /* Réduire légèrement */
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  z-index: 10;
+  backdrop-filter: blur(5px); /* Ajouter un effet de flou */
+}
+
+.navButton:hover {
+  transform: scale(1.1);
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.cardsContainer {
+  display: flex;
+  gap: 20px; /* Réduire légèrement l'espace */
+  justify-content: center;
+  flex: 1;
+  overflow: visible;
+}
+
+.card {
+  background: linear-gradient(180deg, rgba(55, 65, 81, 0.9) 0%, rgba(31, 41, 55, 0.9) 100%);
+  backdrop-filter: blur(10px); /* Ajouter effet glassmorphism */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  width: 280px; /* Réduire légèrement */
+  max-width: 280px;
+  flex-shrink: 0;
+}
+
+.card:hover {
+  transform: translateY(-5px) scale(1.02); /* Modifier l'effet hover */
+  box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.5);
+}
+
+.card:hover .image {
+  transform: scale(1.1);
+}
+
+.imageContainer {
+  position: relative;
+  height: 250px; /* Réduire légèrement */
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s ease;
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.7) 100%);
+}
+
+.cardContent {
+  padding: 20px; /* Réduire légèrement */
+  color: white;
+}
+
+.characterInfo {
+  text-align: center;
+  margin-bottom: 14px;
+}
+
+.characterName {
+  font-size: 1.3rem; /* Réduire légèrement */
+  font-weight: bold;
+  margin: 0 0 6px 0;
+}
+
+.characterClass {
+  color: #fbbf24;
+  font-weight: 600;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.characterDescription {
+  color: #d1d5db;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  text-align: center;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.indicators {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px; /* Réduire l'espace */
+  gap: 8px;
+}
+
+.indicator {
+  width: 10px; /* Réduire légèrement */
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background-color: rgba(75, 85, 99, 0.7);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.indicator:hover {
+  background-color: rgba(156, 163, 175, 0.8);
+}
+
+.indicatorActive {
+  background-color: #fbbf24;
+  transform: scale(1.2);
+}
+
+/* Responsive adapté */
+@media (max-width: 1200px) {
+  .cardsContainer {
+    gap: 15px;
+  }
+
+  .card {
+    width: 260px;
+    max-width: 260px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0;
+  }
+
+  .carouselContainer {
+    gap: 10px;
+  }
+
+  .navButton {
+    width: 45px;
+    height: 45px;
+  }
+
+  .card {
+    width: 240px;
+    max-width: 240px;
+  }
+
+  .imageContainer {
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .titleSection {
+    margin-bottom: 20px;
+  }
+
+  .card {
+    width: 220px;
+    max-width: 220px;
+  }
+
+  .imageContainer {
+    height: 180px;
+  }
+
+  .cardContent {
+    padding: 15px;
+  }
+
+  .indicators {
+    margin-top: 20px;
+  }
+}
