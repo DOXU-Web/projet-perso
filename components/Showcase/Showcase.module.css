@@ -1,28 +1,24 @@
 .container {
   width: 100%;
-
-  /* Garder ces propriétés : */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 20px;
   box-sizing: border-box;
-
-  /* Optionnel: ajuster le padding pour s'adapter au ContentBlock */
   padding: 0;
 }
 
 .titleSection {
   text-align: center;
-  margin-bottom: 40px; /* Réduire l'espace si nécessaire */
+  margin-bottom: 40px;
 }
 
 .title {
-  font-size: clamp(1.5rem, 4vw, 2.5rem); /* Réduire légèrement la taille */
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
   font-weight: bold;
   color: white;
-  margin-bottom: 15px; /* Réduire l'espace */
+  margin-bottom: 15px;
   background: linear-gradient(45deg, #fbbf24, #f97316);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -30,7 +26,7 @@
 }
 
 .subtitle {
-  font-size: clamp(0.9rem, 2vw, 1.1rem); /* Réduire légèrement */
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
   color: #d1d5db;
   margin: 0;
 }
@@ -40,16 +36,16 @@
   display: flex;
   align-items: center;
   width: 100%;
-  max-width: 1200px; /* Réduire pour s'adapter au ContentBlock */
+  max-width: 1200px;
   gap: 20px;
 }
 
 .navButton {
-  background-color: rgba(0, 0, 0, 0.6); /* Augmenter légèrement l'opacité */
+  background-color: rgba(0, 0, 0, 0.6);
   color: white;
   border: none;
   border-radius: 50%;
-  width: 50px; /* Réduire légèrement */
+  width: 50px;
   height: 50px;
   display: flex;
   align-items: center;
@@ -58,7 +54,7 @@
   transition: all 0.3s ease;
   flex-shrink: 0;
   z-index: 10;
-  backdrop-filter: blur(5px); /* Ajouter un effet de flou */
+  backdrop-filter: blur(5px);
 }
 
 .navButton:hover {
@@ -68,38 +64,119 @@
 
 .cardsContainer {
   display: flex;
-  gap: 20px; /* Réduire légèrement l'espace */
+  gap: 20px;
   justify-content: center;
   flex: 1;
   overflow: visible;
+  position: relative;
+}
+
+.cardsContainerAnimating {
+  /* Conserver les interactions pendant l'animation */
+}
+
+/* Animations de défilement fluides */
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(20px);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-20px);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.slideNext {
+  animation: slideInFromRight 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.slidePrev {
+  animation: slideInFromLeft 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .card {
   background: linear-gradient(180deg, rgba(55, 65, 81, 0.9) 0%, rgba(31, 41, 55, 0.9) 100%);
-  backdrop-filter: blur(10px); /* Ajouter effet glassmorphism */
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 2px solid transparent;
   border-radius: 16px;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
-  width: 280px; /* Réduire légèrement */
+  width: 280px;
   max-width: 280px;
   flex-shrink: 0;
+  position: relative;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #fbbf24, #f97316, #ef4444, #8b5cf6, #06b6d4, #10b981, #fbbf24);
+  background-size: 400% 400%;
+  border-radius: 18px;
+  z-index: -1;
+  animation: gradientShift 3s ease infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover::before {
+  opacity: 1;
 }
 
 .card:hover {
-  transform: translateY(-5px) scale(1.02); /* Modifier l'effet hover */
-  box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.5);
+  transform: translateY(-12px) scale(1.05);
+  box-shadow: 0 40px 80px -12px rgba(0, 0, 0, 0.6);
 }
 
 .card:hover .image {
   transform: scale(1.1);
 }
 
+.card:active {
+  transform: translateY(-8px) scale(1.02);
+  transition: all 0.1s ease;
+}
+
+.card:hover .characterName {
+  color: #fbbf24;
+  transition: color 0.3s ease;
+}
+
 .imageContainer {
   position: relative;
-  height: 250px; /* Réduire légèrement */
+  height: 250px;
   overflow: hidden;
 }
 
@@ -117,7 +194,7 @@
 }
 
 .cardContent {
-  padding: 20px; /* Réduire légèrement */
+  padding: 20px;
   color: white;
 }
 
@@ -127,7 +204,7 @@
 }
 
 .characterName {
-  font-size: 1.3rem; /* Réduire légèrement */
+  font-size: 1.3rem;
   font-weight: bold;
   margin: 0 0 6px 0;
 }
@@ -151,34 +228,7 @@
   overflow: hidden;
 }
 
-.indicators {
-  display: flex;
-  justify-content: center;
-  margin-top: 30px; /* Réduire l'espace */
-  gap: 8px;
-}
-
-.indicator {
-  width: 10px; /* Réduire légèrement */
-  height: 10px;
-  border-radius: 50%;
-  border: none;
-  background-color: rgba(75, 85, 99, 0.7);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(5px);
-}
-
-.indicator:hover {
-  background-color: rgba(156, 163, 175, 0.8);
-}
-
-.indicatorActive {
-  background-color: #fbbf24;
-  transform: scale(1.2);
-}
-
-/* Responsive adapté */
+/* Responsive */
 @media (max-width: 1200px) {
   .cardsContainer {
     gap: 15px;
@@ -230,9 +280,5 @@
 
   .cardContent {
     padding: 15px;
-  }
-
-  .indicators {
-    margin-top: 20px;
   }
 }

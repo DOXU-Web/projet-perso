@@ -19,10 +19,6 @@ const MainPage = () => {
 
       <Banner imageSrc="/doxu_art.png" alt="test"></Banner>
 
-      <ContentBlock imageSrc="/fond3.png" alt="test">
-        <Showcase />
-      </ContentBlock>
-
       <ContentBlock imageSrc="/city.png" alt="test">
         <h2 className={styles.title}>Un monde épique t’attend</h2>
         <p className={styles.text}>
@@ -33,6 +29,10 @@ const MainPage = () => {
           quibusque honoris certamen et gloriae; ex quo inimicitias maximas saepe inter amicissimos exstitisse."
         </p>
         <YoutubeEmbed videoId="sSgyzHDuDkU" />
+      </ContentBlock>
+
+      <ContentBlock imageSrc="/fond3.png" alt="test">
+        <Showcase />
       </ContentBlock>
 
       <ContentBlock imageSrc="/loading_controls.png" alt="test">
@@ -65,12 +65,8 @@ const MainPage = () => {
         </div>
       </ContentBlock>
 
-      <ContentBlock imageSrc="/ombre.png" alt="test">
-        <CharacterMenu />
-      </ContentBlock>
-
       <ContentBlock imageSrc="/fond1.png" alt="test">
-        <h2 className={styles.title}>STAFF</h2>
+        <h2 className={styles.title}>STORY</h2>
         <p className={styles.text}>
           Et quia Montius inter dilancinantium manus spiritum efflaturus Epigonum et Eusebium nec professionem nec
           dignitatem ostendens aliquotiens increpabat, qui sint hi magna quaerebatur industria, et nequid intepesceret,
@@ -80,7 +76,7 @@ const MainPage = () => {
       </ContentBlock>
 
       <ContentBlock imageSrc="/fond2.png" alt="test">
-        <h2 className={styles.title}>NOUS CONTACTER</h2>
+        <h2 className={styles.title}>NOUS SOUTENIR</h2>
         <p className={styles.text}>
           Et quia Montius inter dilancinantium manus spiritum efflaturus Epigonum et Eusebium nec professionem nec
           dignitatem ostendens aliquotiens increpabat, qui sint hi magna quaerebatur industria, et nequid intepesceret,
@@ -90,7 +86,7 @@ const MainPage = () => {
       </ContentBlock>
 
       <ContentBlock imageSrc="/fond3.png" alt="test">
-        <h2 className={styles.title}>TEST</h2>
+        <h2 className={styles.title}>STAFF</h2>
         <p className={styles.text}>
           Et quia Montius inter dilancinantium manus spiritum efflaturus Epigonum et Eusebium nec professionem nec
           dignitatem ostendens aliquotiens increpabat, qui sint hi magna quaerebatur industria, et nequid intepesceret,
@@ -102,24 +98,6 @@ const MainPage = () => {
       <ContentBlock imageSrc="/banner.png" alt="test">
         <EmailForm />
       </ContentBlock>
-
-      {/*<div className={styles.menu}>
-        <Link className={styles.char} href="/perso_1">
-          <Image className={styles.imgStyle} src="/sheer_2.png" alt="Perso 1" width={1092} height={1538} />
-        </Link>
-
-        <Link className={styles.char} href="/perso_2">
-          <Image className={styles.imgStyle} src="/sheer_2.png" alt="Perso 2" width={308} height={560} />
-        </Link>
-
-        <Link className={styles.char} href="/perso">
-          <Image className={styles.imgStyle} src="/sheer_2.png" alt="Perso 3" width={308} height={560} />
-        </Link>
-
-        <Link className={styles.char} href="/perso">
-          <Image className={styles.imgStyle} src="/sheer_2.png" alt="Perso 4" width={308} height={560} />
-        </Link>
-      </div>*/}
 
       <ScrollButton />
 

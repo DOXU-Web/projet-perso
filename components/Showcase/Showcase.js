@@ -13,6 +13,7 @@ const Showcase = () => {
       description:
         "Une combattante redoutable maîtrisant l'épée et le bouclier. Sa force légendaire fait trembler ses ennemis.",
       image: "perso_1.png",
+      href: "/personnages/sheer",
     },
     {
       id: 2,
@@ -20,6 +21,7 @@ const Showcase = () => {
       class: "Mage",
       description: "Maître des arts mystiques, il manipule les éléments avec une précision inégalée.",
       image: "perso_2.png",
+      href: "/personnages/sethj",
     },
     {
       id: 3,
@@ -27,6 +29,7 @@ const Showcase = () => {
       class: "Assassin",
       description: "Rapide comme l'éclair, elle frappe dans l'ombre avant de disparaître sans laisser de trace.",
       image: "perso_1.png",
+      href: "/personnages/luna",
     },
     {
       id: 4,
@@ -34,11 +37,16 @@ const Showcase = () => {
       class: "Paladin",
       description: "Protecteur des innocents, il allie la puissance divine à sa force physique exceptionnelle.",
       image: "perso_2.png",
+      href: "/personnages/thorin",
     },
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [visibleCards, setVisibleCards] = useState(3);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [autoPlay, setAutoPlay] = useState(true);
+  const [slideDirection, setSlideDirection] = useState("next");
+  const [outgoingIndex, setOutgoingIndex] = useState(null);
 
   const calculateVisibleCards = () => {
     const width = window.innerWidth;
@@ -57,15 +65,25 @@ const Showcase = () => {
   }, []);
 
   const nextCharacter = () => {
+    if (isAnimating) return;
+    setIsAnimating(true);
+    setSlideDirection("next");
     setCurrentIndex((prev) => (prev + 1) % characters.length);
+    setTimeout(() => setIsAnimating(false), 600);
   };
 
   const prevCharacter = () => {
+    if (isAnimating) return;
+    setIsAnimating(true);
+    setSlideDirection("prev");
     setCurrentIndex((prev) => (prev - 1 + characters.length) % characters.length);
+    setTimeout(() => setIsAnimating(false), 600);
   };
 
   const handleCharacterClick = (character) => {
     console.log("Personnage sélectionné:", character);
+    // Navigation vers la page du personnage
+    window.location.href = character.href;
   };
 
   const getVisibleCharacters = () => {
@@ -85,17 +103,28 @@ const Showcase = () => {
       </div>
 
       <div className={styles.carouselContainer}>
-        <button className={styles.navButton} onClick={prevCharacter}>
+        <button
+          className={styles.navButton}
+          onClick={() => {
+            setAutoPlay(false);
+            prevCharacter();
+          }}
+        >
           <ChevronLeft size={24} />
         </button>
 
-        <div className={styles.cardsContainer}>
+        <div
+          className={`${styles.cardsContainer} ${isAnimating ? styles.cardsContainerAnimating : ""}`}
+          onMouseEnter={() => setAutoPlay(false)}
+        >
           {getVisibleCharacters().map((character, index) => {
             const isSelected = index === 0;
             return (
               <div
-                key={character.id}
-                className={`${styles.card} ${isSelected ? styles.selectedCard : ""}`}
+                key={`${character.id}-${currentIndex}-${index}`}
+                className={`${styles.card} ${isSelected ? styles.selectedCard : ""} ${
+                  isAnimating ? (slideDirection === "next" ? styles.slideNext : styles.slidePrev) : ""
+                }`}
                 onClick={() => handleCharacterClick(character)}
               >
                 <div className={styles.imageContainer}>
@@ -114,19 +143,15 @@ const Showcase = () => {
           })}
         </div>
 
-        <button className={styles.navButton} onClick={nextCharacter}>
+        <button
+          className={styles.navButton}
+          onClick={() => {
+            setAutoPlay(false);
+            nextCharacter();
+          }}
+        >
           <ChevronRight size={24} />
         </button>
-      </div>
-
-      <div className={styles.indicators}>
-        {characters.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrentIndex(index)}
-            className={`${styles.indicator} ${index === currentIndex ? styles.indicatorActive : ""}`}
-          />
-        ))}
       </div>
     </div>
   );
