@@ -1,40 +1,7 @@
-.imgStyle {
-  width: 100%;
-  height: auto;
-  border: 5px solid red;
-  border-radius: 10px;
-}
-
-.imgStyle:hover {
-  transform: scale(1.2);
-  transition: transform 0.3s ease-in-out;
-}
-
-.menu {
-  background-color: rgb(44, 191, 205);
-  display: flex;
-  gap: 20px;
-  padding: 100px;
-  justify-content: center;
-}
-
-.char {
-  width: 20%;
-  height: auto;
-}
-
 .gifStyle {
   display: flex;
   gap: 10px;
   justify-content: center;
-}
-
-.loreStyle {
-  background-image: url("/loading_controls.png");
-  background-size: cover;
-  background-position: center;
-  height: 100vh;
-  width: 100%;
 }
 
 .title {
@@ -45,34 +12,6 @@
 .text {
   font-size: 1.1rem;
   line-height: 1.6;
-}
-
-.banner {
-  max-width: 1800px;
-  margin: 4rem auto;
-  padding: 3rem 2rem;
-  background-size: cover;
-  background-position: center;
-  border-radius: 20px;
-  position: relative;
-  overflow: hidden;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 400px;
-}
-
-.container {
-  max-width: 1200px;
-  display: flex;
-  gap: 5%;
-  padding: 5%;
-  margin-top: 5%;
-  margin-left: 15%;
-  justify-content: center;
-  align-content: center;
-  background-image: url("/fond2.png");
 }
 
 .charBackground1 {

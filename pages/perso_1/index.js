@@ -1,7 +1,10 @@
+import styles from "./index.module.css";
+import Link from "next/link";
+
 const Perso_1 = () => {
   return (
     <>
-      <div>
+      <div className={styles.contentContainer}>
         <h1>Aphelios</h1>
         <h2>Arme des Lunaris</h2>
         <p>
@@ -11,6 +14,10 @@ const Perso_1 = () => {
           Alune étaient célébrés comme les enfants du destin par le culte targonien des Lunaris.
         </p>
       </div>
+
+      <Link href="/#showcase" scroll={false}>
+        <button>Back to menu</button>
+      </Link>
     </>
   );
 };

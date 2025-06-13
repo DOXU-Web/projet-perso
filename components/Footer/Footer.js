@@ -1,20 +1,27 @@
-import Image from "next/image";
 import styles from "./Footer.module.css";
 
 const Footer = () => {
   return (
-    <footer className={styles.footerContainer}>
-      <Image src="/doxu_logo.png" alt="Doxu logo" width={500} height={500} />
-      <nav>
-        <ul>
-          <li>Conditions générales d&apos;utilisation</li>
-          <li>Politique de confidentialité</li>
-          <li>Nous soutenir sur Patreon</li>
-          <li>Contact</li>
-        </ul>
-      </nav>
-
-      <p>© Doxu 2025</p>
+    <footer className={styles.footer}>
+      <div className={styles.socials}>
+        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+          <img src="/logo/icons8-twitter-entouré.svg" className={styles.icon} />
+          <span>Twitter</span>
+        </a>
+        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+          <img src="/logo/icons8-facebook-circled.svg" className={styles.icon} />
+          <span>Facebook</span>
+        </a>
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+          <img src="logo/icons8-instagram.svg" className={styles.icon} />
+          <span>Instagram</span>
+        </a>
+        <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
+          <img src="/logo/icons8-youtube.svg" className={styles.icon} />
+          <span>YouTube</span>
+        </a>
+      </div>
+      <p className={styles.text}>© 2025 Doxu. Tous droits réservés.</p>
     </footer>
   );
 };

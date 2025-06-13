@@ -1,9 +1,9 @@
 import Image from "next/image";
 import styles from "./ContentBlock.module.css";
 
-const ContentBlock = ({ imageSrc, alt = "Image de contenu", children }) => {
+const ContentBlock = ({ id, imageSrc, alt = "Image de contenu", children }) => {
   return (
-    <div className={styles.contentBlock}>
+    <div id={id} className={styles.contentBlock}>
       {imageSrc && (
         <div className={styles.imageWrapper}>
           <Image
@@ -16,6 +16,7 @@ const ContentBlock = ({ imageSrc, alt = "Image de contenu", children }) => {
           />
         </div>
       )}
+
       <div className={styles.content}>
         <div className={styles.contentInner}>{children}</div>
       </div>

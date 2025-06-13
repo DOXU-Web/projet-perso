@@ -13,7 +13,7 @@ const Showcase = () => {
       description:
         "Une combattante redoutable maîtrisant l'épée et le bouclier. Sa force légendaire fait trembler ses ennemis.",
       image: "perso_1.png",
-      href: "/personnages/sheer",
+      href: "/perso_1",
     },
     {
       id: 2,

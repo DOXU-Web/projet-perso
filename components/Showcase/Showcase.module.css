@@ -71,10 +71,6 @@
   position: relative;
 }
 
-.cardsContainerAnimating {
-  /* Conserver les interactions pendant l'animation */
-}
-
 /* Animations de défilement fluides */
 @keyframes slideInFromRight {
   0% {
