@@ -1,23 +1,97 @@
+/* Changez l'image de fond ici */
 body {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+  overflow: hidden; /* Empêche tout scroll */
+}
+
+/* Pseudo-élément pour l'image de fond retournée */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background-image: url("/perso_1.png");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: 70% center;
   background-size: cover;
-  padding: 0;
-  margin: 0;
-  height: 100%;
-  overflow-x: hidden;
+  transform: scaleX(-1); /* Retourne uniquement l'image de fond */
+  z-index: -1; /* Met l'image derrière le contenu */
 }
 
+/* Bloc de contenu principal */
 .contentContainer {
-  display: flex;
-  background-color: #f0f8ff;
-  align-items: center;
-  flex-direction: column;
-  margin-right: 70%;
-  margin-left: 10%;
-  margin-top: 12%;
-  padding: 2%;
-  border-radius: 8%;
+  background-color: #f0f8ff; /* Changez la couleur de fond ici */
+  max-width: 450px;
+  max-height: 60vh; /* Limite la hauteur pour éviter le scroll */
+  margin-top: 0;
+  margin-left: 8%;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow-y: auto; /* Scroll interne si nécessaire */
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%); /* Centre verticalement */
+
+  /* Bordure stylée */
+  border: 3px solid transparent;
+  background: linear-gradient(#f0f8ff, #f0f8ff) padding-box,
+    linear-gradient(45deg, #4a90e2, #8e44ad, #e74c3c, #f39c12) border-box;
+}
+
+/* Titre principal */
+.title {
+  font-size: 2.2rem;
+  color: #333333; /* Changez la couleur du titre ici */
+  text-align: center;
+  margin-bottom: 8px;
+  margin-top: 0; /* Supprime la marge du haut */
+  font-weight: bold;
+}
+
+/* Sous-titre */
+.subtitle {
+  font-size: 1.1rem;
+  color: #666666; /* Changez la couleur du sous-titre ici */
+  text-align: center;
+  margin-bottom: 15px;
+  font-style: italic;
+}
+
+/* Description */
+.description {
+  font-size: 0.95rem;
+  color: #333333; /* Changez la couleur du texte ici */
+  line-height: 1.5;
+  text-align: justify;
+  margin: 0;
+}
+
+/* Bouton de retour en bas à droite */
+.backButton {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #4a90e2; /* Changez la couleur du bouton ici */
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+/* Animation du bouton au survol */
+.backButton:hover {
+  background-color: #357abd; /* Couleur du bouton au survol */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }

@@ -33,26 +33,7 @@ const MainPage = () => {
         <Showcase />
       </ContentBlock>
 
-      <ContentBlock
-        imageSrc="/loading_controls.png"
-        alt="test"
-        characters={[
-          {
-            src: "/sethj2.png",
-            top: "100px",
-            left: "-60px",
-            width: "600px",
-            height: "600px",
-          },
-          {
-            src: "/sethj1.png",
-            bottom: "0",
-            right: "-30px",
-            width: "600px",
-            height: "600px",
-          },
-        ]}
-      >
+      <ContentBlock imageSrc="/loading_controls.png" alt="test">
         <h2 className={styles.title}>1 VS 1</h2>
         <p className={styles.text}>
           Et quia Montius inter dilancinantium manus spiritum efflaturus Epigonum et Eusebium nec professionem nec

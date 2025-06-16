@@ -1,6 +1,8 @@
 "use client";
+
 import React, { useState } from "react";
 import Image from "next/image";
+import styles from "./Header.module.css";
 
 const Navbar = () => {
   const [isClick, setisClick] = useState(false);
@@ -10,40 +12,37 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-black sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <div className="flex items-center">
-            <div className="flex-shrink-0">
+    <nav className={styles.navbar}>
+      <div className={styles.navbarContainer}>
+        <div className={styles.navbarContent}>
+          <div className={styles.navbarLogoSection}>
+            <div className={styles.navbarLogo}>
               <a href="/">
                 <Image src="/doxu_logo.png" alt="Doxu logo" width={200} height={200} />
               </a>
             </div>
           </div>
 
-          <div className="hidden md:flex ml-4 items-center space-x-4">
-            <a href="/" className="text-white hover:bg-white hover:text-black rounded-lg p-2">
+          <div className={styles.navbarMenuDesktop}>
+            <a href="/" className={styles.navbarLink}>
               Home
             </a>
-            <a href="/" className="text-white hover:bg-white hover:text-black rounded-lg p-2">
+            <a href="/" className={styles.navbarLink}>
               Perso
             </a>
-            <a href="/" className="text-white hover:bg-white hover:text-black rounded-lg p-2">
+            <a href="/" className={styles.navbarLink}>
               Gameplay
             </a>
-            <a href="/" className="text-white hover:bg-white hover:text-black rounded-lg p-2">
+            <a href="/" className={styles.navbarLink}>
               Contact
             </a>
           </div>
 
-          <div className="md:hidden flex items-center">
-            <button
-              className="inline-flex items-center justify-center p-2 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
-              onClick={toggleNavbar}
-            >
+          <div className={styles.navbarMobileButtonContainer}>
+            <button className={styles.navbarMobileButton} onClick={toggleNavbar}>
               {isClick ? (
                 <svg
-                  className="h-6 w-6"
+                  className={styles.navbarIcon}
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -53,7 +52,7 @@ const Navbar = () => {
                 </svg>
               ) : (
                 <svg
-                  className="h-6 w-6"
+                  className={styles.navbarIcon}
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -67,22 +66,18 @@ const Navbar = () => {
         </div>
 
         {/* MENU MOBILE avec transition */}
-        <div
-          className={`md:hidden bg-black transition-all duration-600 ease-in-out overflow-hidden ${
-            isClick ? "max-h-[1000px]" : "max-h-0"
-          }`}
-        >
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <a href="/" className="text-white block hover:bg-white hover:text-black rounded-lg p-2">
+        <div className={`${styles.navbarMobileMenu} ${isClick ? styles.navbarMobileMenuOpen : ""}`}>
+          <div className={styles.navbarMobileMenuContent}>
+            <a href="/" className={styles.navbarMobileLink}>
               Home
             </a>
-            <a href="/" className="text-white block hover:bg-white hover:text-black rounded-lg p-2">
+            <a href="/" className={styles.navbarMobileLink}>
               Perso
             </a>
-            <a href="/" className="text-white block hover:bg-white hover:text-black rounded-lg p-2">
+            <a href="/" className={styles.navbarMobileLink}>
               Gameplay
             </a>
-            <a href="/" className="text-white block hover:bg-white hover:text-black rounded-lg p-2">
+            <a href="/" className={styles.navbarMobileLink}>
               Contact
             </a>
           </div>
