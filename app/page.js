@@ -15,10 +15,10 @@ const MainPage = () => {
     <>
       <Header />
 
-      <Banner imageSrc="/doxu_art.png" alt="test"></Banner>
+      <Banner id="download" imageSrc="/doxu_art.png" alt="test"></Banner>
 
-      <ContentBlock imageSrc="/city.png" alt="test">
-        <h2 className={styles.title}>Un monde épique t’attend</h2>
+      <ContentBlock id="trailer" imageSrc="/city.png" alt="test">
+        <h1 className={styles.title}>DOXU</h1>
         <p className={styles.text}>
           Explore des territoires mystérieux et combats des ennemis redoutables.Sin autem ad adulescentiam perduxissent,
           dirimi tamen interdum contentione vel uxoriae condicionis vel commodi alicuius, quod idem adipisci uterque non
@@ -33,7 +33,7 @@ const MainPage = () => {
         <Showcase />
       </ContentBlock>
 
-      <ContentBlock imageSrc="/loading_controls.png" alt="test">
+      <ContentBlock id="gameplay" imageSrc="/loading_controls.png" alt="test">
         <h2 className={styles.title}>1 VS 1</h2>
         <p className={styles.text}>
           Et quia Montius inter dilancinantium manus spiritum efflaturus Epigonum et Eusebium nec professionem nec
@@ -59,7 +59,7 @@ const MainPage = () => {
         </div>
       </ContentBlock>
 
-      <ContentBlock imageSrc="/fond1.png" alt="test">
+      <ContentBlock id="story" imageSrc="/fond1.png" alt="test">
         <h2 className={styles.title}>STORY</h2>
         <p className={styles.text}>
           Et quia Montius inter dilancinantium manus spiritum efflaturus Epigonum et Eusebium nec professionem nec
@@ -69,7 +69,7 @@ const MainPage = () => {
         </p>
       </ContentBlock>
 
-      <ContentBlock imageSrc="/fond2.png" alt="test">
+      <ContentBlock id="support" imageSrc="/fond2.png" alt="test">
         <h2 className={styles.title}>NOUS SOUTENIR</h2>
         <p className={styles.text}>
           Et quia Montius inter dilancinantium manus spiritum efflaturus Epigonum et Eusebium nec professionem nec
@@ -79,7 +79,7 @@ const MainPage = () => {
         </p>
       </ContentBlock>
 
-      <ContentBlock imageSrc="/fond3.png" alt="test">
+      <ContentBlock id="staff" imageSrc="/fond3.png" alt="test">
         <h2 className={styles.title}>STAFF</h2>
         <p className={styles.text}>
           Et quia Montius inter dilancinantium manus spiritum efflaturus Epigonum et Eusebium nec professionem nec

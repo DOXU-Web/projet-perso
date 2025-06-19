@@ -44,6 +44,10 @@
   animation: fadeInUp 0.6s ease-out;
 }
 
+.anchor {
+  scroll-margin-top: 95px;
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;

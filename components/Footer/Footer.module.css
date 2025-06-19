@@ -1,8 +1,8 @@
 .footer {
-  background-color: #443f3f;
-  color: white;
+  background-color: #000000;
   padding: 2rem;
   text-align: center;
+  color: rgb(255, 255, 255);
 }
 
 .socials {
@@ -24,14 +24,23 @@
 }
 
 .socials a:hover {
-  color: #a900d3; /* Exemple : bleu Twitter */
+  color: #a900d3;
 }
 
 .icon {
-  font-size: 24px;
+  width: 40px;
+  height: 40px;
 }
 
-.text {
+.text1 {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4rem;
+  margin-bottom: 1rem;
+}
+
+.text2 {
   font-size: 0.9rem;
   color: #aaa;
 }

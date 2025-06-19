@@ -19,6 +19,7 @@ const Banner = ({ imageSrc, alt }) => {
           sizes="100vw"
           style={{ objectFit: "cover", objectPosition: "center" }}
         />
+
         <div className={styles.overlay}>
           <button className={styles.downloadBtn} onClick={handleDownload}>
             Download Beta

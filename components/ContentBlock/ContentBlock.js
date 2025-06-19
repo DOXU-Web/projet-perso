@@ -3,7 +3,7 @@ import styles from "./ContentBlock.module.css";
 
 const ContentBlock = ({ id, imageSrc, alt = "Image de contenu", children }) => {
   return (
-    <div id={id} className={styles.contentBlock}>
+    <div id={id} className={`${styles.anchor} ${styles.contentBlock}`}>
       {imageSrc && (
         <div className={styles.imageWrapper}>
           <Image

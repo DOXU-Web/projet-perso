@@ -6,7 +6,7 @@ const Perso_1 = () => {
     <>
       {/* Bouton de retour en bas à droite */}
       <Link href="/#showcase" scroll={false}>
-        <button className={styles.backButton}>Retour au menu</button>
+        <button className={styles.backButton}>Back</button>
       </Link>
 
       {/* Bloc de contenu principal */}

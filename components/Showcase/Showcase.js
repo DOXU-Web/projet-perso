@@ -21,7 +21,7 @@ const Showcase = () => {
       class: "Mage",
       description: "Maître des arts mystiques, il manipule les éléments avec une précision inégalée.",
       image: "perso_2.png",
-      href: "/personnages/sethj",
+      href: "/perso_2",
     },
     {
       id: 3,
