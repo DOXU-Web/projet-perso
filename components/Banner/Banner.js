@@ -16,8 +16,13 @@ const Banner = ({ imageSrc, alt }) => {
           alt={alt}
           fill
           priority
-          sizes="100vw"
-          style={{ objectFit: "cover", objectPosition: "center" }}
+          quality={95}
+          sizes="(max-width: 480px) 95vw, (max-width: 768px) 95vw, (max-width: 1024px) 95vw, 92vw"
+          style={{
+            objectFit: "cover",
+            objectPosition: "center",
+            imageRendering: "high-quality",
+          }}
         />
 
         <div className={styles.overlay}>

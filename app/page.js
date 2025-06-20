@@ -5,19 +5,18 @@ import GifGameplay from "../components/GifGameplay/GifGameplay";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 import Banner from "../components/Banner/Banner";
-import EmailForm from "@/components/EmailForm/EmailForm";
-import ScrollButton from "@/components/ScrollButton/ScrollButton";
-import ContentBlock from "@/components/ContentBlock/ContentBlock";
-import Showcase from "@/components/Showcase/Showcase";
+import ScrollButton from "../components/ScrollButton/ScrollButton";
+import ContentBlock from "../components/ContentBlock/ContentBlock";
+import Showcase from "../components/Showcase/Showcase";
 
 const MainPage = () => {
   return (
     <>
       <Header />
 
-      <Banner id="download" imageSrc="/doxu_art.png" alt="test"></Banner>
+      <Banner id="download" imageSrc="/doxu_art.png" alt="Banner download"></Banner>
 
-      <ContentBlock id="trailer" imageSrc="/city.png" alt="test">
+      <ContentBlock id="trailer" imageSrc="/loading_controls.png" alt="Trailer">
         <h1 className={styles.title}>DOXU</h1>
         <p className={styles.text}>
           Explore des territoires mystérieux et combats des ennemis redoutables.Sin autem ad adulescentiam perduxissent,
@@ -33,7 +32,7 @@ const MainPage = () => {
         <Showcase />
       </ContentBlock>
 
-      <ContentBlock id="gameplay" imageSrc="/loading_controls.png" alt="test">
+      <ContentBlock id="gameplay" imageSrc="/fond5.png" alt="Gameplay">
         <h2 className={styles.title}>1 VS 1</h2>
         <p className={styles.text}>
           Et quia Montius inter dilancinantium manus spiritum efflaturus Epigonum et Eusebium nec professionem nec
@@ -52,14 +51,14 @@ const MainPage = () => {
 
         <h2 className={styles.title}>Exemple des mécaniques du jeu</h2>
         <div className={styles.gifStyle}>
-          <GifGameplay gifUrl="/back_med_air.gif" altText="Back Med Air" />
-          <GifGameplay gifUrl="/fwrd_med.gif" altText="Test" />
-          <GifGameplay gifUrl="/jump_walk.gif" altText="Test" />
-          <GifGameplay gifUrl="/shuiro.gif" altText="Test" />
+          <GifGameplay gifUrl="/back_med_air.gif" altText="Gif 1" />
+          <GifGameplay gifUrl="/fwrd_med.gif" altText="Gif 2" />
+          <GifGameplay gifUrl="/jump_walk.gif" altText="Gif 3" />
+          <GifGameplay gifUrl="/shuiro.gif" altText="Gif 4" />
         </div>
       </ContentBlock>
 
-      <ContentBlock id="story" imageSrc="/fond1.png" alt="test">
+      <ContentBlock id="story" imageSrc="/fond1.png" alt="Story">
         <h2 className={styles.title}>STORY</h2>
         <p className={styles.text}>
           Et quia Montius inter dilancinantium manus spiritum efflaturus Epigonum et Eusebium nec professionem nec
@@ -69,7 +68,7 @@ const MainPage = () => {
         </p>
       </ContentBlock>
 
-      <ContentBlock id="support" imageSrc="/fond2.png" alt="test">
+      <ContentBlock id="support" imageSrc="/fond2.png" alt="Support">
         <h2 className={styles.title}>NOUS SOUTENIR</h2>
         <p className={styles.text}>
           Et quia Montius inter dilancinantium manus spiritum efflaturus Epigonum et Eusebium nec professionem nec
@@ -79,7 +78,7 @@ const MainPage = () => {
         </p>
       </ContentBlock>
 
-      <ContentBlock id="staff" imageSrc="/fond3.png" alt="test">
+      <ContentBlock id="staff" imageSrc="/fond4.png" alt="Staff">
         <h2 className={styles.title}>STAFF</h2>
         <p className={styles.text}>
           Et quia Montius inter dilancinantium manus spiritum efflaturus Epigonum et Eusebium nec professionem nec
@@ -89,9 +88,7 @@ const MainPage = () => {
         </p>
       </ContentBlock>
 
-      <ContentBlock imageSrc="/banner.png" alt="test">
-        <EmailForm />
-      </ContentBlock>
+      <ContentBlock imageSrc="/banner.png" alt="test"></ContentBlock>
 
       <ScrollButton />
 
