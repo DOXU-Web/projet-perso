@@ -13,7 +13,7 @@ const Showcase = () => {
       description:
         "Une combattante redoutable maîtrisant l'épée et le bouclier. Sa force légendaire fait trembler ses ennemis.",
       image: "perso_1.png",
-      href: "/perso_1",
+      href: "/sheer",
     },
     {
       id: 2,
@@ -21,23 +21,15 @@ const Showcase = () => {
       class: "Mage",
       description: "Maître des arts mystiques, il manipule les éléments avec une précision inégalée.",
       image: "perso_2.png",
-      href: "/perso_2",
+      href: "/sethj",
     },
     {
       id: 3,
-      name: "Luna l'Assassin",
+      name: "Sigg",
       class: "Assassin",
       description: "Rapide comme l'éclair, elle frappe dans l'ombre avant de disparaître sans laisser de trace.",
-      image: "perso_1.png",
-      href: "/personnages/luna",
-    },
-    {
-      id: 4,
-      name: "Thorin le Paladin",
-      class: "Paladin",
-      description: "Protecteur des innocents, il allie la puissance divine à sa force physique exceptionnelle.",
-      image: "perso_2.png",
-      href: "/personnages/thorin",
+      image: "perso_3.png",
+      href: "/sigg",
     },
   ];
 

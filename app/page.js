@@ -88,7 +88,9 @@ const MainPage = () => {
         </p>
       </ContentBlock>
 
-      <ContentBlock imageSrc="/banner.png" alt="test"></ContentBlock>
+      <ContentBlock imageSrc="/banner.png" alt="test">
+        <p>TEST</p>
+      </ContentBlock>
 
       <ScrollButton />
 

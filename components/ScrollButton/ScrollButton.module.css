@@ -12,6 +12,7 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
   z-index: 1000;
+  border: 2px solid #ffffff;
 
   /* Animation d'apparition */
   opacity: 0;
@@ -20,7 +21,7 @@
 }
 
 .scrollToTop:hover {
-  background-color: #616161;
+  background-color: #000000;
   color: rgb(255, 255, 255);
 }
 
