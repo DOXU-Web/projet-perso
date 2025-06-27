@@ -3,31 +3,26 @@
 import React, { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import styles from "./Showcase.module.css";
+import { useRouter } from "next/navigation";
 
 const Showcase = () => {
+  const router = useRouter();
+
   const characters = [
     {
       id: 1,
       name: "Sheer",
       class: "Guerrier",
-      description:
-        "Une combattante redoutable maîtrisant l'épée et le bouclier. Sa force légendaire fait trembler ses ennemis.",
+      description: "Maîtrise de l'épée.",
       image: "perso_1.png",
       href: "/sheer",
     },
-    {
-      id: 2,
-      name: "Sethj",
-      class: "Mage",
-      description: "Maître des arts mystiques, il manipule les éléments avec une précision inégalée.",
-      image: "perso_2.png",
-      href: "/sethj",
-    },
+    { id: 2, name: "Sethj", class: "Mage", description: "Pouvoirs mystiques.", image: "perso_2.png", href: "/sethj" },
     {
       id: 3,
       name: "Sigg",
       class: "Assassin",
-      description: "Rapide comme l'éclair, elle frappe dans l'ombre avant de disparaître sans laisser de trace.",
+      description: "Frappe dans l’ombre.",
       image: "perso_3.png",
       href: "/sigg",
     },
@@ -36,46 +31,31 @@ const Showcase = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [visibleCards, setVisibleCards] = useState(3);
   const [isAnimating, setIsAnimating] = useState(false);
-  const [autoPlay, setAutoPlay] = useState(true);
-  const [slideDirection, setSlideDirection] = useState("next");
-  const [outgoingIndex, setOutgoingIndex] = useState(null);
-
-  const calculateVisibleCards = () => {
-    const width = window.innerWidth;
-    if (width >= 1200) return 3;
-    if (width >= 768) return 2;
-    return 1;
-  };
 
   useEffect(() => {
-    const handleResize = () => {
-      setVisibleCards(calculateVisibleCards());
+    const updateCards = () => {
+      const width = window.innerWidth;
+      if (width >= 1200) setVisibleCards(3);
+      else if (width >= 768) setVisibleCards(2);
+      else setVisibleCards(1);
     };
-    setVisibleCards(calculateVisibleCards());
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    updateCards();
+    window.addEventListener("resize", updateCards);
+    return () => window.removeEventListener("resize", updateCards);
   }, []);
 
-  const nextCharacter = () => {
+  const next = () => {
     if (isAnimating) return;
     setIsAnimating(true);
-    setSlideDirection("next");
     setCurrentIndex((prev) => (prev + 1) % characters.length);
-    setTimeout(() => setIsAnimating(false), 600);
+    setTimeout(() => setIsAnimating(false), 400);
   };
 
-  const prevCharacter = () => {
+  const prev = () => {
     if (isAnimating) return;
     setIsAnimating(true);
-    setSlideDirection("prev");
     setCurrentIndex((prev) => (prev - 1 + characters.length) % characters.length);
-    setTimeout(() => setIsAnimating(false), 600);
-  };
-
-  const handleCharacterClick = (character) => {
-    console.log("Personnage sélectionné:", character);
-    // Navigation vers la page du personnage
-    window.location.href = character.href;
+    setTimeout(() => setIsAnimating(false), 400);
   };
 
   const getVisibleCharacters = () => {
@@ -95,54 +75,40 @@ const Showcase = () => {
       </div>
 
       <div className={styles.carouselContainer}>
-        <button
-          className={styles.navButton}
-          onClick={() => {
-            setAutoPlay(false);
-            prevCharacter();
-          }}
-        >
-          <ChevronLeft size={24} />
-        </button>
+        {visibleCards < 3 && (
+          <button className={styles.navButton} onClick={prev}>
+            <ChevronLeft size={24} />
+          </button>
+        )}
 
-        <div
-          className={`${styles.cardsContainer} ${isAnimating ? styles.cardsContainerAnimating : ""}`}
-          onMouseEnter={() => setAutoPlay(false)}
-        >
-          {getVisibleCharacters().map((character, index) => {
-            const isSelected = index === 0;
-            return (
-              <div
-                key={`${character.id}-${currentIndex}-${index}`}
-                className={`${styles.card} ${isSelected ? styles.selectedCard : ""} ${
-                  isAnimating ? (slideDirection === "next" ? styles.slideNext : styles.slidePrev) : ""
-                }`}
-                onClick={() => handleCharacterClick(character)}
-              >
-                <div className={styles.imageContainer}>
-                  <img className={styles.image} src={character.image} alt={character.name} />
-                  <div className={styles.imageOverlay}></div>
-                </div>
-                <div className={styles.cardContent}>
-                  <div className={styles.characterInfo}>
-                    <h2 className={styles.characterName}>{character.name}</h2>
-                    <p className={styles.characterClass}>{character.class}</p>
-                  </div>
-                  <p className={styles.characterDescription}>{character.description}</p>
-                </div>
+        <div className={`${styles.cardsContainer} ${isAnimating ? styles.slide : ""}`}>
+          {getVisibleCharacters().map((char) => (
+            <div key={char.id} className={styles.card} onClick={() => (window.location.href = char.href)}>
+              <div className={styles.imageContainer}>
+                <img className={styles.image} src={char.image} alt={char.name} />
+                <div className={styles.imageOverlay}></div>
               </div>
-            );
-          })}
+              <div className={styles.cardContent}>
+                <div className={styles.characterInfo}>
+                  <h2 className={styles.characterName}>{char.name}</h2>
+                  <p className={styles.characterClass}>{char.class}</p>
+                </div>
+                <p className={styles.characterDescription}>{char.description}</p>
+              </div>
+            </div>
+          ))}
         </div>
 
-        <button
-          className={styles.navButton}
-          onClick={() => {
-            setAutoPlay(false);
-            nextCharacter();
-          }}
-        >
-          <ChevronRight size={24} />
+        {visibleCards < 3 && (
+          <button className={styles.navButton} onClick={next}>
+            <ChevronRight size={24} />
+          </button>
+        )}
+      </div>
+
+      <div className={styles.ctaWrapper}>
+        <button className={styles.ctaButton} onClick={() => router.push("/coming-soon")}>
+          Coming Soon
         </button>
       </div>
     </div>
