@@ -1,5 +1,6 @@
 import styles from "./index.module.css";
 import Link from "next/link";
+import CharacterDetail from "../../components/CharacterDetail/CharacterDetail";
 
 const Sheer = () => {
   return (
@@ -48,21 +49,8 @@ const Sheer = () => {
         </Link>
       </div>
 
-      {/* Bloc de texte à gauche */}
-      <div className={styles.contentContainer}>
-        <h1 className={styles.title}>Sethj</h1>
-        <h2 className={styles.subtitle}>Arme des Lunaris</h2>
-        <p className={styles.description}>
-          Aphelios Arme des Lunaris Aphelios Arme des Lunaris La lune, si lointaine et pourtant si incroyablement
-          proche, élève au-dessus des pentes de imposant Mont Targon. Nés lors un rare phénomène de convergence lunaire,
-          quand la lune physique est éclipsée par son reflet dans le royaume spirituel, Aphelios et sa sœur jumelle
-          Alune étaient célébrés comme les enfants du destin par le culte targonien des Lunaris. Aphelios Arme des
-          Lunaris Aphelios Arme des Lunaris La lune, si lointaine et pourtant si incroyablement proche, élève au-dessus
-          des pentes de imposant Mont Targon. Nés lors un rare phénomène de convergence lunaire, quand la lune physique
-          est éclipsée par son reflet dans le royaume spirituel, Aphelios et sa sœur jumelle Alune étaient célébrés
-          comme les enfants du destin par le culte targonien des Lunaris.
-        </p>
-      </div>
+      {/* Utilisation du nouveau composant */}
+      <CharacterDetail characterName="Sethj" styles={styles} />
 
       {/* Image du personnage */}
       <img src="/sethj2.png" alt="Sethj Splash" className={styles.image1} />

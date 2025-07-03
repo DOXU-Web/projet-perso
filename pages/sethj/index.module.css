@@ -17,28 +17,28 @@ body {
   top: 50%;
   left: 15%;
   transform: translateY(-50%);
-  background-color: rgba(148, 89, 0, 0.3);
+  background-color: rgba(101, 67, 33, 0.3);
   backdrop-filter: blur(10px);
   max-width: 450px;
   padding: 40px;
   border-radius: 20px;
 
   /* EFFET NÉON */
-  border: 2px solid #af6300;
-  box-shadow: 0 0 10px #af6300, 0 0 20px rgba(255, 149, 0, 0.5), 0 0 40px rgba(255, 149, 0, 0.5),
-    inset 0 0 10px rgba(255, 166, 0, 0.1);
+  border: 2px solid #cd853f;
+  box-shadow: 0 0 10px #cd853f, 0 0 20px rgba(205, 133, 63, 0.5), 0 0 40px rgba(205, 133, 63, 0.5),
+    inset 0 0 10px rgba(205, 133, 63, 0.1);
 
   animation: neonPulse 3s ease-in-out infinite alternate;
 }
 
 @keyframes neonPulse {
   from {
-    box-shadow: 0 0 10px #af6300, 0 0 20px rgba(255, 149, 0, 0.5), 0 0 40px rgba(255, 149, 0, 0.5),
-      inset 0 0 10px rgba(255, 166, 0, 0.1);
+    box-shadow: 0 0 10px #cd853f, 0 0 20px rgba(205, 133, 63, 0.5), 0 0 40px rgba(205, 133, 63, 0.5),
+      inset 0 0 10px rgba(205, 133, 63, 0.1);
   }
   to {
-    box-shadow: 0 0 15px #af6300, 0 0 30px rgba(255, 149, 0, 0.5), 0 0 60px rgba(255, 149, 0, 0.5),
-      inset 0 0 15px rgba(255, 166, 0, 0.1);
+    box-shadow: 0 0 15px #cd853f, 0 0 30px rgba(205, 133, 63, 0.5), 0 0 60px rgba(205, 133, 63, 0.5),
+      inset 0 0 15px rgba(205, 133, 63, 0.1);
   }
 }
 
@@ -48,16 +48,16 @@ body {
   text-align: center;
   margin: 0 0 10px 0;
   font-weight: bold;
-  text-shadow: 0 0 10px rgba(255, 149, 0, 0.5);
+  text-shadow: 0 0 10px rgba(205, 133, 63, 0.8);
 }
 
 .subtitle {
   font-size: 1.2rem;
-  color: #af6300;
+  color: #cd853f;
   text-align: center;
   margin-bottom: 20px;
   font-style: italic;
-  text-shadow: 0 0 5px rgba(255, 149, 0, 0.5);
+  text-shadow: 0 0 5px rgba(205, 133, 63, 0.6);
 }
 
 .description {
@@ -94,10 +94,10 @@ body {
 
 .navArrow {
   position: absolute;
-  background-color: rgba(0, 122, 170, 0.8);
+  background-color: rgba(101, 67, 33, 0.8);
   backdrop-filter: blur(5px);
-  color: #00ffe5;
-  border: 2px solid #00ffe5;
+  color: #cd853f;
+  border: 2px solid #cd853f;
   width: 60px;
   height: 60px;
   border-radius: 50%;
@@ -108,13 +108,13 @@ body {
   pointer-events: auto;
   transition: all 0.3s ease;
 
-  box-shadow: 0 0 10px rgba(0, 255, 229, 0.3), 0 4px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 10px rgba(205, 133, 63, 0.3), 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .navArrow:hover {
-  background-color: rgba(0, 255, 229, 0.2);
+  background-color: rgba(205, 133, 63, 0.2);
   transform: scale(1.1);
-  box-shadow: 0 0 20px rgba(0, 255, 229, 0.6), 0 6px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 20px rgba(205, 133, 63, 0.6), 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 .navArrow:active {
@@ -134,10 +134,10 @@ body {
   position: fixed;
   bottom: 30px;
   right: 30px;
-  background-color: rgba(0, 122, 170, 0.8);
+  background-color: rgba(101, 67, 33, 0.8);
   backdrop-filter: blur(5px);
   color: #ffffff;
-  border: 2px solid #00ffe5;
+  border: 2px solid #cd853f;
   padding: 15px 30px;
   border-radius: 30px;
   font-size: 1rem;
@@ -145,15 +145,15 @@ body {
   cursor: pointer;
   z-index: 100;
 
-  box-shadow: 0 0 10px rgba(0, 255, 229, 0.3), 0 4px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 10px rgba(205, 133, 63, 0.3), 0 4px 15px rgba(0, 0, 0, 0.2);
 
   transition: all 0.3s ease;
 }
 
 .backButton:hover {
-  background-color: rgba(0, 255, 229, 0.2);
+  background-color: rgba(205, 133, 63, 0.2);
   transform: translateY(-3px);
-  box-shadow: 0 0 20px rgba(0, 255, 229, 0.6), 0 8px 25px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 20px rgba(205, 133, 63, 0.6), 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
 .backButton:active {
