@@ -1,0 +1,393 @@
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/city.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+  will-change: transform;
+}
+
+.container {
+  min-height: 100vh;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.backButton {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: linear-gradient(135deg, rgba(220, 38, 38, 0.6), rgba(124, 58, 237, 0.6));
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 15px 30px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  z-index: 100;
+  box-shadow: 0 10px 30px rgba(220, 38, 38, 0.2);
+  transition: all 0.3s ease;
+  transform: translateZ(0);
+}
+
+.backButton:hover {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.7), rgba(139, 92, 246, 0.7));
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(220, 38, 38, 0.3);
+}
+
+.header {
+  text-align: center;
+  margin: 80px 0 60px 0;
+  background: linear-gradient(135deg, rgba(220, 38, 38, 0.4), rgba(124, 58, 237, 0.4));
+  backdrop-filter: blur(5px);
+  padding: 40px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(220, 38, 38, 0.2);
+  transform: translateZ(0);
+}
+
+.title {
+  font-size: 3rem;
+  color: #ffffff;
+  margin: 0 0 15px 0;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(124, 58, 237, 0.4);
+}
+
+.subtitle {
+  font-size: 1.3rem;
+  color: #ffffff;
+  margin: 0;
+  font-style: italic;
+  text-shadow: 1px 1px 3px rgba(220, 38, 38, 0.4);
+  opacity: 0.9;
+}
+
+.charactersGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+.characterCard {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.4), rgba(147, 51, 234, 0.4));
+  backdrop-filter: blur(5px);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
+  transform: translateZ(0);
+}
+
+.characterCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(147, 51, 234, 0.3);
+}
+
+.imageContainer {
+  position: relative;
+  height: 350px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.characterImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.characterCard:hover .characterImage {
+  transform: scale(1.05);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 15px;
+}
+
+.comingSoonBadge {
+  background: linear-gradient(135deg, rgba(220, 38, 38, 0.7), rgba(124, 58, 237, 0.7));
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 15px rgba(220, 38, 38, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.characterInfo {
+  padding: 25px;
+}
+
+.characterName {
+  font-size: 1.5rem;
+  color: #ffffff;
+  margin: 0 0 8px 0;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(147, 51, 234, 0.4);
+}
+
+.characterDescription {
+  font-size: 1rem;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.4;
+  text-shadow: 1px 1px 2px rgba(59, 130, 246, 0.4);
+  opacity: 0.9;
+}
+
+.rosterSection {
+  text-align: center;
+  width: 100%;
+  margin: 60px 0 0 0;
+  padding: 0;
+}
+
+.rosterTitle {
+  font-size: 1.8rem;
+  color: #ffffff;
+  margin: 0 0 15px 0;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(220, 38, 38, 0.8);
+}
+
+
+.rosterImageContainer {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.rosterImage {
+  width: auto;
+  height: auto;
+  max-width: 800px;
+  display: block;
+}
+
+/* Modal styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+}
+
+.modalContent {
+  position: relative;
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.6), rgba(59, 130, 246, 0.6));
+  backdrop-filter: blur(5px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  max-width: 90%;
+  max-height: 90%;
+  box-shadow: 0 10px 30px rgba(124, 58, 237, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.closeButton {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 30px;
+  color: #ffffff;
+  cursor: pointer;
+  z-index: 1001;
+  transition: color 0.3s ease;
+}
+
+.closeButton:hover {
+  color: #fbbf24;
+}
+
+.modalImage {
+  max-width: 100%;
+  max-height: 60vh;
+  object-fit: contain;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.modalInfo {
+  text-align: center;
+}
+
+.modalName {
+  font-size: 2rem;
+  color: #ffffff;
+  margin: 0 0 10px 0;
+  text-shadow: 2px 2px 4px rgba(220, 38, 38, 0.4);
+}
+
+.modalDescription {
+  font-size: 1.2rem;
+  color: #ffffff;
+  margin: 0;
+  text-shadow: 1px 1px 3px rgba(59, 130, 246, 0.4);
+  opacity: 0.9;
+}
+
+/* RESPONSIVE DESIGN */
+
+/* Tablettes */
+@media (max-width: 1024px) {
+  .container {
+    padding: 15px;
+  }
+  
+  .title {
+    font-size: 2.5rem;
+  }
+  
+  .charactersGrid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+  }
+  
+  .backButton {
+    bottom: 20px;
+    right: 20px;
+    padding: 12px 24px;
+  }
+}
+
+/* Smartphones */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+  
+  .header {
+    margin: 60px 0 40px 0;
+    padding: 30px 20px;
+  }
+  
+  .title {
+    font-size: 2rem;
+  }
+  
+  .subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .charactersGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .characterCard {
+    margin: 0 10px;
+  }
+  
+  .imageContainer {
+    height: 280px;
+  }
+  
+  .rosterTitle {
+    font-size: 2rem;
+  }
+  
+  .backButton {
+    bottom: 15px;
+    right: 15px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Très petits écrans */
+@media (max-width: 480px) {
+  .header {
+    margin: 50px 0 30px 0;
+    padding: 25px 15px;
+  }
+  
+  .title {
+    font-size: 1.8rem;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+  }
+  
+  .charactersGrid {
+    gap: 15px;
+  }
+  
+  .characterCard {
+    margin: 0 5px;
+  }
+  
+  .imageContainer {
+    height: 250px;
+  }
+  
+  .characterInfo {
+    padding: 20px;
+  }
+  
+  .characterName {
+    font-size: 1.3rem;
+  }
+  
+  .characterDescription {
+    font-size: 0.9rem;
+  }
+  
+  .rosterSection {
+    padding: 30px 15px;
+  }
+  
+  .rosterTitle {
+    font-size: 1.8rem;
+  }
+}

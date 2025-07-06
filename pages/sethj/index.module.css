@@ -3,12 +3,22 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background-image: url("/city.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed;
-  overflow-x: hidden;
+  z-index: -1;
+  will-change: transform;
 }
 
 /* BLOC DE TEXTE À GAUCHE */
@@ -17,8 +27,7 @@ body {
   top: 50%;
   left: 15%;
   transform: translateY(-50%);
-  background-color: rgba(101, 67, 33, 0.3);
-  backdrop-filter: blur(10px);
+  background-color: rgba(101, 67, 33, 0.8);
   max-width: 450px;
   padding: 40px;
   border-radius: 20px;
@@ -29,6 +38,7 @@ body {
     inset 0 0 10px rgba(205, 133, 63, 0.1);
 
   animation: neonPulse 3s ease-in-out infinite alternate;
+  transform: translateY(-50%) translateZ(0);
 }
 
 @keyframes neonPulse {
@@ -94,8 +104,7 @@ body {
 
 .navArrow {
   position: absolute;
-  background-color: rgba(101, 67, 33, 0.8);
-  backdrop-filter: blur(5px);
+  background-color: rgba(101, 67, 33, 0.9);
   color: #cd853f;
   border: 2px solid #cd853f;
   width: 60px;
@@ -107,6 +116,7 @@ body {
   cursor: pointer;
   pointer-events: auto;
   transition: all 0.3s ease;
+  transform: translateZ(0);
 
   box-shadow: 0 0 10px rgba(205, 133, 63, 0.3), 0 4px 15px rgba(0, 0, 0, 0.2);
 }
@@ -134,8 +144,7 @@ body {
   position: fixed;
   bottom: 30px;
   right: 30px;
-  background-color: rgba(101, 67, 33, 0.8);
-  backdrop-filter: blur(5px);
+  background-color: rgba(101, 67, 33, 0.9);
   color: #ffffff;
   border: 2px solid #cd853f;
   padding: 15px 30px;
@@ -144,6 +153,7 @@ body {
   font-weight: 500;
   cursor: pointer;
   z-index: 100;
+  transform: translateZ(0);
 
   box-shadow: 0 0 10px rgba(205, 133, 63, 0.3), 0 4px 15px rgba(0, 0, 0, 0.2);
 
