@@ -5,19 +5,19 @@ const Footer = () => {
     <footer className={styles.footer}>
       <div className={styles.socials}>
         <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-          <img src="/logo/twitter.svg" className={styles.icon} />
+          <img src="/logo/twitter.svg" alt="Twitter" className={styles.icon} />
           <span>Twitter</span>
         </a>
         <a href="https://patreon.com" target="_blank" rel="noopener noreferrer">
-          <img src="/logo/patreon.svg" className={styles.icon} />
+          <img src="/logo/patreon.svg" alt="Patreon" className={styles.icon} />
           <span>Patreon</span>
         </a>
         <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-          <img src="logo/instagram.svg" className={styles.icon} />
+          <img src="/logo/instagram.svg" alt="Instagram" className={styles.icon} />
           <span>Instagram</span>
         </a>
         <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
-          <img src="/logo/youtube.svg" className={styles.icon} />
+          <img src="/logo/youtube.svg" alt="YouTube" className={styles.icon} />
           <span>YouTube</span>
         </a>
       </div>

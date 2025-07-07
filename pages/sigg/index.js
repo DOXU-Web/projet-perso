@@ -2,7 +2,7 @@ import styles from "./index.module.css";
 import Link from "next/link";
 import CharacterDetail from "../../components/CharacterDetail/CharacterDetail";
 
-const Sheer = () => {
+const Sigg = () => {
   return (
     <>
       {/* Bouton de retour */}
@@ -58,4 +58,4 @@ const Sheer = () => {
   );
 };
 
-export default Sheer;
+export default Sigg;
