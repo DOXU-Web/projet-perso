@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import styles from "./Header.module.css";
 
-const Navbar = () => {
+const Header = () => {
   const [isClick, setisClick] = useState(false);
 
   const toggleNavbar = () => {
@@ -105,4 +105,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Header;

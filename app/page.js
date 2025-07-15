@@ -17,7 +17,7 @@ const MainPage = () => {
       <Banner id="download" imageSrc="/doxu_art.png" alt="Banner download"></Banner>
 
       <ContentBlock id="trailer" imageSrc="/loading_controls.png" alt="Trailer">
-        <h1 className={styles.title}>DOXU</h1>
+        <h1 className={styles.title}>TRAILER</h1>
         <p className={styles.text}>
           Explore des territoires mystérieux et combats des ennemis redoutables.Sin autem ad adulescentiam perduxissent,
           dirimi tamen interdum contentione vel uxoriae condicionis vel commodi alicuius, quod idem adipisci uterque non
