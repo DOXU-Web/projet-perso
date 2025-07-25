@@ -1,30 +1,19 @@
 "use client";
 
-import { useState, useEffect } from "react";
+// Styles
 import styles from "./ScrollButton.module.css";
 
 const ScrollButton = () => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsVisible(window.scrollY > 300);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
+  // Fonction simple pour remonter en haut
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  // Bouton toujours visible (plus simple pour débutant)
   return (
-    isVisible && (
-      <button className={styles.scrollToTop} onClick={scrollToTop} aria-label="Remonter en haut">
-        ↑
-      </button>
-    )
+    <button className={styles.scrollToTop} onClick={scrollToTop}>
+      ↑
+    </button>
   );
 };
 

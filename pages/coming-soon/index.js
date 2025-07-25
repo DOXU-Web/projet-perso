@@ -53,7 +53,7 @@ const ComingSoon = () => {
   ];
 
   return (
-    <>
+    <div className={styles.pageContainer}>
       <div className={styles.container}>
         <Link href="/#showcase">
           <button className={styles.backButton}>Retour</button>
@@ -61,9 +61,7 @@ const ComingSoon = () => {
 
         <div className={styles.header}>
           <h1 className={styles.title}>Prochains Personnages</h1>
-          <p className={styles.subtitle}>
-            Découvrez les futurs héros qui rejoindront bientôt l'arène
-          </p>
+          <p className={styles.subtitle}>Découvrez les futurs héros qui rejoindront bientôt l'arène</p>
         </div>
 
         <div className={styles.charactersGrid}>
@@ -85,9 +83,7 @@ const ComingSoon = () => {
               </div>
               <div className={styles.characterInfo}>
                 <h3 className={styles.characterName}>{character.name}</h3>
-                <p className={styles.characterDescription}>
-                  {character.description}
-                </p>
+                <p className={styles.characterDescription}>{character.description}</p>
               </div>
             </div>
           ))}
@@ -105,30 +101,8 @@ const ComingSoon = () => {
             />
           </div>
         </div>
-
-        {/* Modal pour agrandir les images */}
-        {selectedImage && (
-          <div className={styles.modal} onClick={closeModal}>
-            <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-              <button className={styles.closeButton} onClick={closeModal}>
-                ×
-              </button>
-              <Image
-                src={selectedImage.image}
-                alt={selectedImage.name}
-                width={500}
-                height={500}
-                className={styles.modalImage}
-              />
-              <div className={styles.modalInfo}>
-                <h3 className={styles.modalName}>{selectedImage.name}</h3>
-                <p className={styles.modalDescription}>{selectedImage.description}</p>
-              </div>
-            </div>
-          </div>
-        )}
       </div>
-    </>
+    </div>
   );
 };
 

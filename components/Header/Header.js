@@ -1,14 +1,17 @@
 "use client";
 
+// React/Next.js
 import React, { useState } from "react";
 import Image from "next/image";
+
+// Styles
 import styles from "./Header.module.css";
 
 const Header = () => {
-  const [isClick, setisClick] = useState(false);
+  const [isClick, setIsClick] = useState(false);
 
   const toggleNavbar = () => {
-    setisClick(!isClick);
+    setIsClick(!isClick);
   };
 
   return (
@@ -49,27 +52,7 @@ const Header = () => {
 
           <div className={styles.navbarMobileButtonContainer}>
             <button className={styles.navbarMobileButton} onClick={toggleNavbar}>
-              {isClick ? (
-                <svg
-                  className={styles.navbarIcon}
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              ) : (
-                <svg
-                  className={styles.navbarIcon}
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
-                </svg>
-              )}
+              {isClick ? "✕" : "☰"}
             </button>
           </div>
         </div>

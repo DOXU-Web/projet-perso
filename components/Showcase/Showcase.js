@@ -1,51 +1,42 @@
 "use client";
 
+// React/Next.js
 import React, { useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import Image from "next/image";
+
+// Styles
 import styles from "./Showcase.module.css";
-import { useRouter } from "next/navigation";
 
 const Showcase = () => {
-  const router = useRouter();
-
-  // State pour stocker les personnages depuis l'API
+  // États simples pour un débutant
   const [characters, setCharacters] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [visibleCards, setVisibleCards] = useState(3);
-  const [isAnimating, setIsAnimating] = useState(false);
+  const [cardsToShow, setCardsToShow] = useState(1); // Nombre de cartes à afficher
 
-  // Fonction pour récupérer les personnages depuis l'API Django
-  const fetchCharacters = async () => {
+  // Fonction simple pour récupérer les personnages
+  const getCharacters = async () => {
     try {
       setLoading(true);
       const response = await fetch("http://127.0.0.1:8000/api/characters/");
-
-      if (!response.ok) {
-        throw new Error(`Erreur HTTP: ${response.status}`);
-      }
-
       const data = await response.json();
-
-      // Transformer les données pour correspondre à votre format actuel
-      const transformedData = data.map((character) => ({
-        id: character.id,
-        name: character.name,
-        class: character.character_class,
-        description: character.description,
-        image: character.image_url || "perso_default.png",
-        href: `/${character.name.toLowerCase()}`,
-      }));
-
-      setCharacters(transformedData);
-      setError(null);
-    } catch (err) {
-      console.error("Erreur lors de la récupération des personnages:", err);
-      setError(err.message);
-
-      // En cas d'erreur, utiliser les données de fallback
+      
+      // Transformer les données simplement
+      const simpleCharacters = data.map((character) => {
+        return {
+          id: character.id,
+          name: character.name,
+          class: character.character_class,
+          description: character.description,
+          image: character.image_url || "perso_default.png",
+          href: `/${character.name.toLowerCase()}`,
+        };
+      });
+      
+      setCharacters(simpleCharacters);
+    } catch (error) {
+      console.log("Erreur API, utilisation des données de test");
+      // Données de test si l'API ne marche pas
       setCharacters([
         {
           id: 1,
@@ -58,7 +49,7 @@ const Showcase = () => {
         {
           id: 2,
           name: "Sethj",
-          class: "Mage",
+          class: "Mage", 
           description: "Pouvoirs mystiques.",
           image: "perso_2.png",
           href: "/sethj",
@@ -72,88 +63,78 @@ const Showcase = () => {
           href: "/sigg",
         },
       ]);
-    } finally {
-      setLoading(false);
+    }
+    setLoading(false);
+  };
+
+  // Fonction pour adapter le nombre de cartes selon la taille d'écran
+  const updateCardsToShow = () => {
+    const screenWidth = window.innerWidth;
+    if (screenWidth >= 1200) {
+      setCardsToShow(3); // 3 cartes sur grand écran
+    } else if (screenWidth >= 768) {
+      setCardsToShow(2); // 2 cartes sur écran moyen
+    } else {
+      setCardsToShow(1); // 1 carte sur mobile
     }
   };
 
-  // Charger les personnages au montage du composant
+  // Charger les données au démarrage
   useEffect(() => {
-    fetchCharacters();
+    getCharacters();
+    updateCardsToShow(); // Vérifier la taille d'écran au démarrage
+    
+    // Écouter les changements de taille d'écran
+    window.addEventListener('resize', updateCardsToShow);
+    
+    // Nettoyer l'écouteur quand le composant se ferme
+    return () => {
+      window.removeEventListener('resize', updateCardsToShow);
+    };
   }, []);
 
-  useEffect(() => {
-    const updateCards = () => {
-      const width = window.innerWidth;
-      let newVisibleCards;
-      if (width >= 1200) newVisibleCards = 3;
-      else if (width >= 768) newVisibleCards = 2;
-      else newVisibleCards = 1;
-
-      // Si le nombre de cartes visibles change, réajuster l'index
-      if (newVisibleCards !== visibleCards) {
-        setVisibleCards(newVisibleCards);
-
-        // Calculer le nouvel index maximum avec le nouveau nombre de cartes
-        const newMaxIndex = Math.max(0, characters.length - newVisibleCards);
-
-        // Réajuster currentIndex si nécessaire pour éviter le débordement
-        setCurrentIndex((prevIndex) => Math.min(prevIndex, newMaxIndex));
-      }
-    };
-
-    updateCards();
-    window.addEventListener("resize", updateCards);
-    return () => window.removeEventListener("resize", updateCards);
-  }, [visibleCards, characters.length]); // Ajouter les dépendances
-
-  // Calculer si on a besoin des flèches de navigation
-  const needsNavigation = characters.length > visibleCards;
-
-  // Calculer l'index maximum pour éviter les espaces vides
-  const maxIndex = Math.max(0, characters.length - visibleCards);
-
-  // Fonction pour réajuster l'index si nécessaire
-  const adjustCurrentIndex = () => {
-    if (currentIndex > maxIndex) {
-      setCurrentIndex(maxIndex);
+  // Fonctions simples pour le carousel
+  const goNext = () => {
+    const maxIndex = characters.length - cardsToShow;
+    if (currentIndex < maxIndex) {
+      setCurrentIndex(currentIndex + 1);
+    } else {
+      setCurrentIndex(0); // Retour au début
     }
   };
 
-  // Réajuster l'index quand les personnages ou visibleCards changent
-  useEffect(() => {
-    adjustCurrentIndex();
-  }, [characters.length, visibleCards, maxIndex]);
-
-  const next = () => {
-    if (isAnimating || characters.length === 0 || !needsNavigation) return;
-    setIsAnimating(true);
-
-    // Si on est au maximum, revenir au début (carousel infini)
-    setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
-
-    setTimeout(() => setIsAnimating(false), 400);
+  const goPrev = () => {
+    const maxIndex = characters.length - cardsToShow;
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);  
+    } else {
+      setCurrentIndex(maxIndex); // Aller à la fin
+    }
   };
 
-  const prev = () => {
-    if (isAnimating || characters.length === 0 || !needsNavigation) return;
-    setIsAnimating(true);
-
-    // Si on est au début, aller à la fin (carousel infini)
-    setCurrentIndex((prev) => (prev <= 0 ? maxIndex : prev - 1));
-
-    setTimeout(() => setIsAnimating(false), 400);
+  // Aller directement à un personnage
+  const goToCharacter = (index) => {
+    const maxIndex = characters.length - cardsToShow;
+    if (index <= maxIndex) {
+      setCurrentIndex(index);
+    }
   };
 
+  // Fonction pour obtenir les personnages à afficher
   const getVisibleCharacters = () => {
-    if (characters.length === 0) return [];
-
-    const visible = [];
-    for (let i = 0; i < Math.min(visibleCards, characters.length); i++) {
-      const index = (currentIndex + i) % characters.length;
-      visible.push(characters[index]);
+    const visibleChars = [];
+    for (let i = 0; i < cardsToShow; i++) {
+      const charIndex = currentIndex + i;
+      if (charIndex < characters.length) {
+        visibleChars.push(characters[charIndex]);
+      }
     }
-    return visible;
+    return visibleChars;
+  };
+
+  // Fonction pour cliquer sur un personnage
+  const handleCharacterClick = (href) => {
+    window.location.href = href;
   };
 
   // Affichage pendant le chargement
@@ -168,82 +149,63 @@ const Showcase = () => {
     );
   }
 
-  // Affichage en cas d'erreur (avec données de fallback)
-  if (error) {
-    console.warn("Utilisation des données de fallback:", error);
-  }
-
   return (
     <div className={styles.container}>
+      {/* Titre */}
       <div className={styles.titleSection}>
         <h1 className={styles.title}>Personnages Légendaires</h1>
-        <p className={styles.subtitle}>
-          Découvrez les héros de votre aventure
-          {error && <span style={{ color: "#f97316", fontSize: "0.8rem" }}> (Mode hors ligne)</span>}
-        </p>
+        <p className={styles.subtitle}>Découvrez les héros de votre aventure</p>
       </div>
 
+      {/* Carousel */}
       <div className={styles.carouselContainer}>
-        {/* Flèche gauche - Affichée seulement si nécessaire */}
-        {needsNavigation && (
-          <button className={styles.navButton} onClick={prev} aria-label="Personnage précédent">
-            <ChevronLeft size={24} />
-          </button>
-        )}
+        {/* Bouton Précédent */}
+        <button className={styles.navButton} onClick={goPrev}>
+          ←
+        </button>
 
-        <div className={`${styles.cardsContainer} ${isAnimating ? styles.slide : ""}`}>
-          {getVisibleCharacters().map((char) => (
-            <div key={char.id} className={styles.card} onClick={() => (window.location.href = char.href)}>
+        {/* Cartes des personnages visibles */}
+        <div className={styles.cardsContainer}>
+          {getVisibleCharacters().map((character) => (
+            <div 
+              key={character.id}
+              className={styles.card} 
+              onClick={() => handleCharacterClick(character.href)}
+            >
               <div className={styles.imageContainer}>
-                <img
+                <Image
                   className={styles.image}
-                  src={char.image}
-                  alt={char.name}
-                  onError={(e) => {
-                    e.target.src = "perso_default.png";
-                  }}
+                  src={character.image || "/perso_default.png"}
+                  alt={character.name}
+                  width={300}
+                  height={400}
                 />
                 <div className={styles.imageOverlay}></div>
               </div>
               <div className={styles.cardContent}>
                 <div className={styles.characterInfo}>
-                  <h2 className={styles.characterName}>{char.name}</h2>
-                  <p className={styles.characterClass}>{char.class}</p>
+                  <h2 className={styles.characterName}>{character.name}</h2>
+                  <p className={styles.characterClass}>{character.class}</p>
                 </div>
-                <p className={styles.characterDescription}>{char.description}</p>
+                <p className={styles.characterDescription}>{character.description}</p>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Flèche droite - Affichée seulement si nécessaire */}
-        {needsNavigation && (
-          <button className={styles.navButton} onClick={next} aria-label="Personnage suivant">
-            <ChevronRight size={24} />
-          </button>
-        )}
+        {/* Bouton Suivant */}
+        <button className={styles.navButton} onClick={goNext}>
+          →
+        </button>
       </div>
 
-      {/* Indicateurs de navigation (optionnel) */}
-      {needsNavigation && characters.length > 0 && (
-        <div className={styles.indicators}>
-          {Array.from({ length: maxIndex + 1 }, (_, index) => (
-            <button
-              key={index}
-              className={`${styles.indicator} ${index === currentIndex ? styles.indicatorActive : ""}`}
-              onClick={() => {
-                if (!isAnimating) {
-                  setCurrentIndex(index);
-                }
-              }}
-              aria-label={`Aller à la page ${index + 1}`}
-            />
-          ))}
-        </div>
-      )}
 
+      {/* Bouton Coming Soon */}
       <div className={styles.ctaWrapper}>
-        <button className={styles.ctaButton} onClick={() => router.push("/coming-soon")}>
+        <button 
+          className={styles.ctaButton} 
+          onClick={() => window.location.href = "/coming-soon"}
+        >
           Coming Soon
         </button>
       </div>

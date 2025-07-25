@@ -1,7 +1,11 @@
 import Image from "next/image";
 import styles from "./ContentBlock.module.css";
 
-const ContentBlock = ({ id, imageSrc, alt = "Image de contenu", children }) => {
+const ContentBlock = (props) => {
+  const id = props.id;
+  const imageSrc = props.imageSrc;
+  const alt = props.alt || "Image de contenu";
+  const children = props.children;
   return (
     <div id={id} className={`${styles.anchor} ${styles.contentBlock}`}>
       {imageSrc && (
@@ -9,10 +13,8 @@ const ContentBlock = ({ id, imageSrc, alt = "Image de contenu", children }) => {
           <Image
             src={imageSrc}
             alt={alt}
-            fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 80vw"
-            style={{ objectFit: "cover", objectPosition: "center" }}
-            priority={false}
+            width={1200}
+            height={800}
           />
         </div>
       )}

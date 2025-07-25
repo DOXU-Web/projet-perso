@@ -1,12 +1,13 @@
-/* IMAGE DE FOND */
-body {
+/* PAGE CONTAINER WITH BACKGROUND */
+.pageContainer {
   margin: 0;
   padding: 0;
   min-height: 100vh;
-  overflow-x: hidden;
+  overflow: hidden;
+  position: relative;
 }
 
-body::before {
+.pageContainer::before {
   content: "";
   position: fixed;
   top: 0;

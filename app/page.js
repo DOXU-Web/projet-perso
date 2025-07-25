@@ -1,13 +1,18 @@
+// React/Next.js
 import Image from "next/image";
+
+// Styles
 import styles from "./page.module.css";
-import YoutubeEmbed from "../components/YoutubeEmbed/YoutubeEmbed";
-import GifGameplay from "../components/GifGameplay/GifGameplay";
+
+// Components
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 import Banner from "../components/Banner/Banner";
 import ScrollButton from "../components/ScrollButton/ScrollButton";
 import ContentBlock from "../components/ContentBlock/ContentBlock";
 import Showcase from "../components/Showcase/Showcase";
+import YoutubeEmbed from "../components/YoutubeEmbed/YoutubeEmbed";
+import GifGameplay from "../components/GifGameplay/GifGameplay";
 
 const MainPage = () => {
   return (

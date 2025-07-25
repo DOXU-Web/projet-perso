@@ -3,9 +3,11 @@
 import Image from "next/image";
 import styles from "./Banner.module.css";
 
-const Banner = ({ imageSrc, alt }) => {
+const Banner = (props) => {
+  const imageSrc = props.imageSrc;
+  const alt = props.alt;
   const handleDownload = () => {
-    window.open("#", "_blank"); // Remplace par ton vrai lien
+    window.open("https://store.steampowered.com/app/3883600/DOXU/?curator_clanid=4777282", "_blank");
   };
 
   return (
@@ -14,15 +16,9 @@ const Banner = ({ imageSrc, alt }) => {
         <Image
           src={imageSrc}
           alt={alt}
-          fill
+          width={1400}
+          height={800}
           priority
-          quality={95}
-          sizes="(max-width: 480px) 95vw, (max-width: 768px) 95vw, (max-width: 1024px) 95vw, 92vw"
-          style={{
-            objectFit: "cover",
-            objectPosition: "center",
-            imageRendering: "high-quality",
-          }}
         />
 
         <div className={styles.overlay}>
