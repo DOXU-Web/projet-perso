@@ -10,14 +10,9 @@ const nextConfig = {
       },
     ],
   },
-};
-
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
-
-module.exports = {
   env: {
-    NEXT_PUBLIC_API_URL: API_URL,
+    NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000",
   },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
