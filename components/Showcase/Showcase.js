@@ -18,7 +18,7 @@ const Showcase = () => {
   const getCharacters = async () => {
     try {
       setLoading(true);
-      const response = await fetch("http://127.0.0.1:8000/api/characters/");
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/characters/`);
       const data = await response.json();
       
       // Transformer les données simplement

@@ -12,4 +12,12 @@ const nextConfig = {
   },
 };
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+
+module.exports = {
+  env: {
+    NEXT_PUBLIC_API_URL: API_URL,
+  },
+};
+
 export default nextConfig;
