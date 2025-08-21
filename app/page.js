@@ -30,7 +30,7 @@ const MainPage = () => {
           incidissent; pestem enim nullam maiorem esse amicitiis quam in plerisque pecuniae cupiditatem, in optimis
           quibusque honoris certamen et gloriae; ex quo inimicitias maximas saepe inter amicissimos exstitisse."
         </p>
-        <YoutubeEmbed videoId="sSgyzHDuDkU" />
+        <YoutubeEmbed videoId="JdPybY2bXDo" />
       </ContentBlock>
 
       <ContentBlock id="showcase" imageSrc="/fond3.png" alt="Showcase">
