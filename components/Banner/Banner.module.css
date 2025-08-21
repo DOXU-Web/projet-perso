@@ -33,6 +33,13 @@
   z-index: 2;
 }
 
+.buttonContainer {
+  display: flex;
+  gap: 1.5rem;
+  position: relative;
+  top: 35%;
+}
+
 .downloadBtn {
   background: linear-gradient(45deg, #fbbf24, #f97316);
   border: none;
@@ -44,8 +51,6 @@
   cursor: pointer;
   transition: transform 0.2s ease, background 0.3s ease;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
-  position: relative;
-  top: 35%;
 }
 
 .downloadBtn:hover {
@@ -72,6 +77,10 @@
     font-size: 1rem;
     padding: 0.8rem 1.6rem;
   }
+
+  .buttonContainer {
+    gap: 1rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -83,5 +92,10 @@
   .downloadBtn {
     font-size: 0.9rem;
     padding: 0.6rem 1.2rem;
+  }
+
+  .buttonContainer {
+    flex-direction: column;
+    gap: 0.8rem;
   }
 }

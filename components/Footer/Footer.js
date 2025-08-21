@@ -5,19 +5,19 @@ const Footer = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.socials}>
-        <a href="https://twitter.com" target="_blank">
+        <a href="https://x.com/DoxuProject" target="_blank">
           <Image src="/logo/twitter.svg" alt="Twitter" className={styles.icon} width={24} height={24} />
           <span>Twitter</span>
         </a>
-        <a href="https://patreon.com" target="_blank">
+        <a href="https://www.patreon.com/c/DeadBatStudio" target="_blank">
           <Image src="/logo/patreon.svg" alt="Patreon" className={styles.icon} width={24} height={24} />
           <span>Patreon</span>
         </a>
-        <a href="https://instagram.com" target="_blank">
+        <a href="https://www.instagram.com/doxu.project/" target="_blank">
           <Image src="/logo/instagram.svg" alt="Instagram" className={styles.icon} width={24} height={24} />
           <span>Instagram</span>
         </a>
-        <a href="https://youtube.com" target="_blank">
+        <a href="https://www.youtube.com/@DOXU-project" target="_blank">
           <Image src="/logo/youtube.svg" alt="YouTube" className={styles.icon} width={24} height={24} />
           <span>YouTube</span>
         </a>

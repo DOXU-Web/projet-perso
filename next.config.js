@@ -3,10 +3,28 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'http',
-        hostname: '127.0.0.1',
-        port: '8000',
-        pathname: '/media/**',
+        protocol: "http",
+        hostname: "127.0.0.1",
+        port: "8000",
+        pathname: "/media/**",
+      },
+      {
+        protocol: "http",
+        hostname: "localhost",
+        port: "8000",
+        pathname: "/media/**",
+      },
+      // Ajout pour votre domaine de production
+      {
+        protocol: "https",
+        hostname: "doxu.fr",
+        pathname: "/media/**",
+      },
+      // Si votre API backend est sur un autre domaine
+      {
+        protocol: "https",
+        hostname: "doxu-backend.onrender.com",
+        pathname: "/media/**",
       },
     ],
   },
