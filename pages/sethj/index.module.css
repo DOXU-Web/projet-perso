@@ -30,8 +30,10 @@
   transform: translateY(-50%);
   background-color: rgba(101, 67, 33, 0.8);
   max-width: 450px;
+  max-height: 60vh; /* ✅ Limitez la hauteur */
   padding: 40px;
   border-radius: 20px;
+  overflow-y: auto; /* ✅ Ajoutez un scroll si nécessaire */
 
   /* EFFET NÉON */
   border: 2px solid #cd853f;
@@ -40,6 +42,27 @@
 
   animation: neonPulse 3s ease-in-out infinite alternate;
   transform: translateY(-50%) translateZ(0);
+
+  /* ✅ Scroll personnalisé */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(205, 133, 63, 0.5) transparent;
+}
+
+.contentContainer::-webkit-scrollbar {
+  width: 6px;
+}
+
+.contentContainer::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.contentContainer::-webkit-scrollbar-thumb {
+  background-color: rgba(205, 133, 63, 0.5);
+  border-radius: 3px;
+}
+
+.contentContainer::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(205, 133, 63, 0.7);
 }
 
 @keyframes neonPulse {
@@ -72,9 +95,9 @@
 }
 
 .description {
-  font-size: 1.2rem;
+  font-size: 1.2rem; /* ✅ Réduisez légèrement la taille */
   color: #ffffff;
-  line-height: 1.6;
+  line-height: 1.5; /* ✅ Réduisez l'interligne */
   text-align: justify;
   margin: 0;
   text-shadow: 0 0 3px rgba(255, 255, 255, 0.3);
@@ -178,6 +201,7 @@
   .contentContainer {
     left: 10%;
     max-width: 350px;
+    max-height: 55vh;
     padding: 30px;
   }
 
@@ -212,19 +236,21 @@
     left: auto;
     transform: none;
     max-width: 90%;
+    max-height: 50vh; /* ✅ Limitez aussi sur mobile */
     margin: 20px auto;
     padding: 25px;
+    overflow-y: auto; /* ✅ Scroll sur mobile aussi */
   }
 
   .image1 {
     position: relative;
     top: auto;
-    right: 20%;
-    transform: none;
+    left: 50%;
+    transform: translateX(-50%);
     width: 100%;
     max-width: 1000px;
     display: block;
-    margin: 15% auto;
+    margin: 20px auto;
   }
 
   .title {
@@ -263,15 +289,24 @@
 
 /* Très petits écrans */
 @media (max-width: 480px) {
+  .pageContainer {
+    overflow: hidden;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+  }
   .contentContainer {
     max-width: 95%;
+    max-height: 45vh;
     padding: 20px;
   }
 
   .image1 {
-    max-width: 400px;
-    bottom: 45px;
-    right: 90px;
+    left: 67%;
+    top: 5%;
+    max-width: 350px;
   }
 
   .title {
