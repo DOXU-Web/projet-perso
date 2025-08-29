@@ -13,3 +13,8 @@
   font-size: 1.1rem;
   line-height: 1.6;
 }
+
+.gameplayTitle {
+  font-size: 1.4rem;
+  text-decoration: underline;
+}

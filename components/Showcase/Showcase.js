@@ -1,18 +1,14 @@
 "use client";
 
-// React/Next.js
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-
-// Styles
 import styles from "./Showcase.module.css";
 
 const Showcase = () => {
-  // États simples pour un débutant
   const [characters, setCharacters] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [cardsToShow, setCardsToShow] = useState(1); // Nombre de cartes à afficher
+  const [cardsToShow, setCardsToShow] = useState(1);
 
   // Fonction simple pour récupérer les personnages
   const getCharacters = async () => {
@@ -20,7 +16,7 @@ const Showcase = () => {
       setLoading(true);
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/characters/`);
       const data = await response.json();
-      
+
       // Transformer les données simplement
       const simpleCharacters = data.map((character) => {
         return {
@@ -32,7 +28,7 @@ const Showcase = () => {
           href: `/${character.name.toLowerCase()}`,
         };
       });
-      
+
       setCharacters(simpleCharacters);
     } catch (error) {
       console.log("Erreur API, utilisation des données de test");
@@ -49,7 +45,7 @@ const Showcase = () => {
         {
           id: 2,
           name: "Sethj",
-          class: "Mage", 
+          class: "Mage",
           description: "Pouvoirs mystiques.",
           image: "perso_2.png",
           href: "/sethj",
@@ -83,13 +79,13 @@ const Showcase = () => {
   useEffect(() => {
     getCharacters();
     updateCardsToShow(); // Vérifier la taille d'écran au démarrage
-    
+
     // Écouter les changements de taille d'écran
-    window.addEventListener('resize', updateCardsToShow);
-    
+    window.addEventListener("resize", updateCardsToShow);
+
     // Nettoyer l'écouteur quand le composant se ferme
     return () => {
-      window.removeEventListener('resize', updateCardsToShow);
+      window.removeEventListener("resize", updateCardsToShow);
     };
   }, []);
 
@@ -106,7 +102,7 @@ const Showcase = () => {
   const goPrev = () => {
     const maxIndex = characters.length - cardsToShow;
     if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);  
+      setCurrentIndex(currentIndex - 1);
     } else {
       setCurrentIndex(maxIndex); // Aller à la fin
     }
@@ -167,11 +163,7 @@ const Showcase = () => {
         {/* Cartes des personnages visibles */}
         <div className={styles.cardsContainer}>
           {getVisibleCharacters().map((character) => (
-            <div 
-              key={character.id}
-              className={styles.card} 
-              onClick={() => handleCharacterClick(character.href)}
-            >
+            <div key={character.id} className={styles.card} onClick={() => handleCharacterClick(character.href)}>
               <div className={styles.imageContainer}>
                 <Image
                   className={styles.image}
@@ -199,13 +191,9 @@ const Showcase = () => {
         </button>
       </div>
 
-
       {/* Bouton Coming Soon */}
       <div className={styles.ctaWrapper}>
-        <button 
-          className={styles.ctaButton} 
-          onClick={() => window.location.href = "/coming-soon"}
-        >
+        <button className={styles.ctaButton} onClick={() => (window.location.href = "/coming-soon")}>
           Coming Soon
         </button>
       </div>
