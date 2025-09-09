@@ -1,3 +1,4 @@
+// Showcase.js
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -10,122 +11,80 @@ const Showcase = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [cardsToShow, setCardsToShow] = useState(1);
 
-  // Fonction simple pour récupérer les personnages
+  // Récupère les personnages depuis l'API
   const getCharacters = async () => {
     try {
       setLoading(true);
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/characters/`);
       const data = await response.json();
 
-      // Transformer les données simplement
-      const simpleCharacters = data.map((character) => {
-        return {
-          id: character.id,
-          name: character.name,
-          class: character.character_class,
-          description: character.description,
-          image: character.image_url || "perso_default.png",
-          href: `/${character.name.toLowerCase()}`,
-        };
-      });
+      const simpleCharacters = data.map((character) => ({
+        id: character.id,
+        name: character.name,
+        class: character.character_class,
+        image: character.image_url || "perso_default.png",
+        href: `/${character.name.toLowerCase()}`,
+      }));
 
       setCharacters(simpleCharacters);
     } catch (error) {
       console.log("Erreur API, utilisation des données de test");
-      // Données de test si l'API ne marche pas
+      // Données de test sans description non plus
       setCharacters([
-        {
-          id: 1,
-          name: "Sheer",
-          class: "Guerrier",
-          description: "Maîtrise de l'épée.",
-          image: "perso_1.png",
-          href: "/sheer",
-        },
-        {
-          id: 2,
-          name: "Sethj",
-          class: "Mage",
-          description: "Pouvoirs mystiques.",
-          image: "perso_2.png",
-          href: "/sethj",
-        },
-        {
-          id: 3,
-          name: "Sigg",
-          class: "Assassin",
-          description: "Frappe dans l'ombre.",
-          image: "perso_3.png",
-          href: "/sigg",
-        },
+        { id: 1, name: "Sheer", class: "Guerrier", image: "perso_1.png", href: "/sheer" },
+        { id: 2, name: "Sethj", class: "Mage", image: "perso_2.png", href: "/sethj" },
+        { id: 3, name: "Sigg", class: "Assassin", image: "perso_3.png", href: "/sigg" },
       ]);
     }
     setLoading(false);
   };
 
-  // Fonction pour adapter le nombre de cartes selon la taille d'écran
+  // Adapte le nombre de cartes selon la taille d'écran
   const updateCardsToShow = () => {
     const screenWidth = window.innerWidth;
     if (screenWidth >= 1200) {
-      setCardsToShow(3); // 3 cartes sur grand écran
+      setCardsToShow(3);
     } else if (screenWidth >= 768) {
-      setCardsToShow(2); // 2 cartes sur écran moyen
+      setCardsToShow(2);
     } else {
-      setCardsToShow(1); // 1 carte sur mobile
+      setCardsToShow(1);
     }
   };
 
-  // Charger les données au démarrage
   useEffect(() => {
     getCharacters();
-    updateCardsToShow(); // Vérifier la taille d'écran au démarrage
-
-    // Écouter les changements de taille d'écran
+    updateCardsToShow();
     window.addEventListener("resize", updateCardsToShow);
-
-    // Nettoyer l'écouteur quand le composant se ferme
-    return () => {
-      window.removeEventListener("resize", updateCardsToShow);
-    };
+    return () => window.removeEventListener("resize", updateCardsToShow);
   }, []);
 
-  // Fonctions simples pour le carousel
+  // Navigation carrousel
   const goNext = () => {
     const maxIndex = characters.length - cardsToShow;
-    if (currentIndex < maxIndex) {
-      setCurrentIndex(currentIndex + 1);
-    } else {
-      setCurrentIndex(0); // Retour au début
-    }
+    setCurrentIndex((i) => (i < maxIndex ? i + 1 : 0));
   };
 
   const goPrev = () => {
     const maxIndex = characters.length - cardsToShow;
-    if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
-    } else {
-      setCurrentIndex(maxIndex); // Aller à la fin
-    }
+    setCurrentIndex((i) => (i > 0 ? i - 1 : maxIndex));
   };
 
-  // Fonction pour obtenir les personnages à afficher
+  // Personnages visibles
   const getVisibleCharacters = () => {
-    const visibleChars = [];
+    const visible = [];
     for (let i = 0; i < cardsToShow; i++) {
-      const charIndex = currentIndex + i;
-      if (charIndex < characters.length) {
-        visibleChars.push(characters[charIndex]);
-      }
+      const idx = currentIndex + i;
+      if (idx < characters.length) visible.push(characters[idx]);
     }
-    return visibleChars;
+    return visible;
   };
 
-  // Fonction pour cliquer sur un personnage
+  // Clic sur une carte
   const handleCharacterClick = (href) => {
     window.location.href = href;
   };
 
-  // Affichage pendant le chargement
+  // Chargement
   if (loading) {
     return (
       <div className={styles.container}>
@@ -139,7 +98,6 @@ const Showcase = () => {
 
   return (
     <div className={styles.container}>
-      {/* Titre */}
       <div className={styles.titleSection}>
         <h1 className={styles.title}>Personnages Légendaires</h1>
         <p className={styles.subtitle}>Découvrez les héros de votre aventure</p>
@@ -147,12 +105,11 @@ const Showcase = () => {
 
       {/* Carousel */}
       <div className={styles.carouselContainer}>
-        {/* Bouton Précédent */}
         <button className={styles.navButton} onClick={goPrev}>
           ←
         </button>
 
-        {/* Cartes des personnages visibles */}
+        {/* Cartes visibles */}
         <div className={styles.cardsContainer}>
           {getVisibleCharacters().map((character) => (
             <div key={character.id} className={styles.card} onClick={() => handleCharacterClick(character.href)}>
@@ -166,24 +123,22 @@ const Showcase = () => {
                 />
                 <div className={styles.imageOverlay}></div>
               </div>
+
               <div className={styles.cardContent}>
                 <div className={styles.characterInfo}>
                   <h2 className={styles.characterName}>{character.name}</h2>
                   <p className={styles.characterClass}>{character.class}</p>
                 </div>
-                <p className={styles.characterDescription}>{character.description}</p>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Bouton Suivant */}
         <button className={styles.navButton} onClick={goNext}>
           →
         </button>
       </div>
 
-      {/* Bouton Coming Soon */}
       <div className={styles.ctaWrapper}>
         <button className={styles.ctaButton} onClick={() => (window.location.href = "/coming-soon")}>
           Coming Soon
