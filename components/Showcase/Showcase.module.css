@@ -144,14 +144,10 @@
   font-size: 0.95rem;
 }
 .characterDescription {
-  color: #d1d5db;
-  font-size: 0.9rem;
-  line-height: 1.5;
-  text-align: center;
-  margin: 0;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
   overflow: hidden;
 }
 
