@@ -14,7 +14,6 @@
   z-index: 1000;
   border: 2px solid #ffffff;
 
-  /* Animation d'apparition */
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 0.4s ease-out forwards;
@@ -23,16 +22,4 @@
 .scrollToTop:hover {
   background-color: #000000;
   color: rgb(255, 255, 255);
-}
-
-/* Animation keyframes */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }

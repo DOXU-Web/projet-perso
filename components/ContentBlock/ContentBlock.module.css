@@ -65,11 +65,6 @@
   }
 }
 
-/* Fond coloré si pas d’image */
-.contentBlock:not(:has(.imageWrapper)) {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-}
-
 /* Responsive */
 @media (max-width: 1024px) {
   .contentBlock {

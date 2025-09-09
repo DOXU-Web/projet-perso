@@ -1,10 +1,5 @@
-// Next.js
 import Image from "next/image";
-
-// Styles
 import styles from "./index.module.css";
-
-// Components
 import CharacterDetail from "../../components/CharacterDetail/CharacterDetail";
 import CharacterNavigation from "../../components/CharacterNavigation/CharacterNavigation";
 
@@ -15,14 +10,7 @@ const Sethj = () => {
 
       <CharacterDetail characterName="Sethj" styles={styles} />
 
-      <Image
-        src="/sethj2.png"
-        alt="Sethj Splash"
-        className={styles.image1}
-        width={1300}
-        height={800}
-        priority
-      />
+      <Image src="/sethj2.png" alt="Sethj Splash" className={styles.image1} width={1300} height={800} priority />
     </div>
   );
 };

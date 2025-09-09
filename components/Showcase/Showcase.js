@@ -108,14 +108,6 @@ const Showcase = () => {
     }
   };
 
-  // Aller directement à un personnage
-  const goToCharacter = (index) => {
-    const maxIndex = characters.length - cardsToShow;
-    if (index <= maxIndex) {
-      setCurrentIndex(index);
-    }
-  };
-
   // Fonction pour obtenir les personnages à afficher
   const getVisibleCharacters = () => {
     const visibleChars = [];

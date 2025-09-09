@@ -1,10 +1,7 @@
 "use client";
 
-// React/Next.js
 import React, { useState } from "react";
 import Image from "next/image";
-
-// Styles
 import styles from "./Header.module.css";
 
 const Header = () => {
@@ -57,7 +54,7 @@ const Header = () => {
           </div>
         </div>
 
-        {/* MENU MOBILE avec transition */}
+        {/* MENU MOBILE */}
         <div className={`${styles.navbarMobileMenu} ${isClick ? styles.navbarMobileMenuOpen : ""}`}>
           <div className={styles.navbarMobileMenuContent}>
             <a href="/" className={styles.navbarMobileLink}>

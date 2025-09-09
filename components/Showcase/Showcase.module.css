@@ -32,37 +32,45 @@
 }
 
 .carouselContainer {
-  position: relative;
-  display: flex;
+  --navW: 56px;
+  --gap: 32px;
+  --cards: 3;
+
+  display: grid;
+  grid-template-columns: var(--navW) 1fr var(--navW);
   align-items: center;
+  column-gap: 16px;
   width: 100%;
   max-width: 1200px;
-  gap: 20px;
-  padding: 30px 0; /* Ajouter du padding pour les effets de hover */
+  padding: 30px 0;
+  margin: 0 auto;
 }
 
 .navButton {
+  place-self: center;
+  width: 48px;
+  height: 48px;
   background-color: rgba(0, 0, 0, 0.6);
   color: white;
   border: none;
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.3s ease;
-  flex-shrink: 0;
-  z-index: 10;
+  transition: transform 0.2s ease, background-color 0.2s ease;
   backdrop-filter: blur(5px);
 }
-
+.carouselContainer > .navButton:first-of-type {
+  grid-column: 1;
+}
+.carouselContainer > .navButton:last-of-type {
+  grid-column: 3;
+}
 .navButton:hover {
-  transform: scale(1.1);
+  transform: scale(1.06);
   background-color: rgba(0, 0, 0, 0.8);
 }
-
 .navButton:disabled {
   opacity: 0.5;
   cursor: not-allowed;
@@ -70,15 +78,15 @@
 }
 
 .cardsContainer {
+  grid-column: 2;
   display: flex;
-  gap: 40px;
+  gap: var(--gap);
   justify-content: center;
-  flex: 1;
-  overflow: visible; /* Retour à visible pour les effets de hover */
-  position: relative;
+  align-items: stretch;
+  width: 100%;
   max-width: 100%;
-  /* Contraindre la largeur pour éviter le débordement horizontal */
-  width: fit-content;
+  overflow: hidden;
+  position: relative;
   margin: 0 auto;
 }
 
@@ -89,101 +97,55 @@
   border-radius: 16px;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
   overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
   cursor: pointer;
-  width: 280px;
-  max-width: 280px;
-  min-width: 280px; /* Assurer une largeur minimale constante */
-  flex-shrink: 0;
+
+  flex: 0 0 calc((100% - (var(--cards) - 1) * var(--gap)) / var(--cards));
+  min-width: 0;
+  max-width: none;
   position: relative;
-  opacity: 1;
-  transform: translateX(0);
 }
-
-.card::before {
-  content: "";
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  background: linear-gradient(45deg, #f97316, #ef4444, #8b5cf6, #5309ff, #06b6d4);
-  background-size: 400% 400%;
-  border-radius: 18px;
-  z-index: -1;
-  animation: gradientShift 3s ease infinite;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.card:hover::before {
-  opacity: 1;
-}
-
 .card:hover {
-  transform: translateY(-12px) scale(1.05);
+  transform: translateY(-6px);
   box-shadow: 0 40px 80px -12px rgba(0, 0, 0, 0.6);
-}
-
-.card:hover .image {
-  transform: scale(1.1);
-}
-
-.card:hover .characterName {
-  color: #fbbf24;
-  transition: color 0.3s ease;
-}
-
-.card:active {
-  transform: translateY(-8px) scale(1.02);
-  transition: all 0.1s ease;
 }
 
 .imageContainer {
   position: relative;
+
   height: 250px;
   overflow: hidden;
 }
-
 .image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.7s ease;
-}
-
-.imageOverlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.7) 100%);
+  object-position: center;
+  transition: none;
 }
 
 .cardContent {
-  padding: 20px;
+  padding: 18px;
   color: white;
 }
-
 .characterInfo {
   text-align: center;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
-
 .characterName {
-  font-size: 1.3rem;
-  font-weight: bold;
-  margin: 0 0 6px 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0 0 6px;
 }
-
 .characterClass {
   color: #fbbf24;
   font-weight: 600;
   margin: 0;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
 }
-
 .characterDescription {
   color: #d1d5db;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   line-height: 1.5;
   text-align: center;
   margin: 0;
@@ -193,14 +155,13 @@
   overflow: hidden;
 }
 
-/* Indicateurs de navigation */
 .indicators {
+  grid-column: 1 / -1;
   display: flex;
   justify-content: center;
   gap: 8px;
   margin-top: 20px;
 }
-
 .indicator {
   width: 8px;
   height: 8px;
@@ -210,23 +171,19 @@
   cursor: pointer;
   transition: all 0.3s ease;
 }
-
 .indicator:hover {
   background-color: rgba(255, 255, 255, 0.5);
   transform: scale(1.2);
 }
-
 .indicatorActive {
   background-color: #fbbf24;
   transform: scale(1.3);
 }
 
-/* Bouton Coming Soon */
 .ctaWrapper {
   margin-top: 40px;
   text-align: center;
 }
-
 .ctaButton {
   background: linear-gradient(45deg, #f97316, #8b5cf6);
   color: white;
@@ -238,23 +195,9 @@
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
   transition: transform 0.2s ease;
 }
-
 .ctaButton:hover {
   transform: scale(1.05);
   background: linear-gradient(45deg, #ef4444, #6e30ff);
-}
-
-/* Animations */
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
 }
 
 @keyframes fadeInUp {
@@ -267,7 +210,6 @@
     transform: translateY(0);
   }
 }
-
 @keyframes slideIn {
   from {
     transform: translateX(20px);
@@ -278,93 +220,96 @@
     opacity: 1;
   }
 }
-
 .slide {
   animation: slideIn 0.4s ease;
 }
-
 .fadeInUp {
   animation: fadeInUp 0.6s ease-out;
 }
 
-/* Responsive */
 @media (max-width: 1200px) {
   .carouselContainer {
-    padding: 25px 0; /* Réduire légèrement le padding */
+    --cards: 2;
+    --navW: 52px;
+    --gap: 24px;
+    padding: 24px 0;
   }
-
-  .cardsContainer {
-    gap: 15px;
-  }
-
-  .card {
-    width: 260px;
-    max-width: 260px;
-    min-width: 260px;
+  .imageContainer {
+    height: 220px;
   }
 }
 
 @media (max-width: 768px) {
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
   .carouselContainer {
-    gap: 10px;
-    padding: 20px 0; /* Padding adapté pour tablette */
+    --cards: 1;
+    --navW: 40px;
+    --gap: 16px;
+    column-gap: 10px;
+    padding: 18px 0;
   }
-
   .navButton {
-    width: 45px;
-    height: 45px;
+    width: 36px;
+    height: 36px;
   }
-
-  .card {
-    width: 240px;
-    max-width: 240px;
-    min-width: 240px;
-  }
-
   .imageContainer {
     height: 200px;
   }
-
-  .indicators {
-    margin-top: 15px;
-  }
-
-  .indicator {
-    width: 6px;
-    height: 6px;
-  }
 }
 
-@media (max-width: 480px) {
-  .titleSection {
-    margin-bottom: 20px;
-  }
-
+@media (max-width: 360px) {
   .carouselContainer {
-    padding: 15px 0; /* Padding réduit pour mobile */
+    --navW: 34px;
+    column-gap: 8px;
   }
-
-  .card {
-    width: 220px;
-    max-width: 220px;
-    min-width: 220px;
+  .navButton {
+    width: 32px;
+    height: 32px;
   }
-
   .imageContainer {
     height: 180px;
   }
+}
 
-  .cardContent {
-    padding: 15px;
+.card {
+  position: relative;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 18px;
+  background: linear-gradient(45deg, #f97316, #ef4444, #8b5cf6, #5309ff, #06b6d4);
+  background-size: 400% 400%;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+
+.card:hover::before {
+  opacity: 1;
+  animation: gradientShift 3s ease infinite;
+}
+
+.imageContainer,
+.cardContent {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
   }
-
-  .indicators {
-    margin-top: 10px;
-    gap: 6px;
+  50% {
+    background-position: 100% 50%;
   }
-
-  .indicator {
-    width: 5px;
-    height: 5px;
+  100% {
+    background-position: 0% 50%;
   }
 }
